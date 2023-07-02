@@ -1,0 +1,13 @@
+[user]
+	name = I am Pierre
+	email = i_am_pierre@icloud.com
+	signingkey = "0x9B2163E6A072FE32"
+[commit]
+    gpgsign = true
+[tag]
+    gpgSign = true
+[core]
+	editor = vim
+	excludesfile = $XDG_CONFIG_HOME/git/.gitignore_global
+[init]
+	defaultBranch = main

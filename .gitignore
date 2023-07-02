@@ -1,0 +1,8 @@
+# VS Code workspace.
+/.vscode/
+
+# macOS Finder cached info.
+.DS_Store
+
+# VirtualEnvs
+/.venv/
