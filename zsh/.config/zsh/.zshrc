@@ -27,14 +27,14 @@ setopt PROMPT_SUBST
 PROMPT='%n@%m: %F{cyan}%~%f %F{red}${vcs_info_msg_0_}%f'
 
 # Configure completions for Homebrew
-if type brew &>/dev/null && [[ $(uname) == Darwin ]] ; then
+if [ $(command -v brew) ] ; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   autoload -Uz compinit
   compinit
 fi
 
 # Configure completions for asdf
-if type asdf &>/dev/null && [[ $(uname) == Darwin ]] ; then
+if [ $(command -v asdf) ] ; then
   . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
@@ -42,4 +42,6 @@ fi
 export GPG_TTY="$(tty)"
 
 # Load Aliases
-source $ZDOTDIR/.aliases
+if [ -f "$ZDOTDIR/.aliases" ] ; then
+  source "$ZDOTDIR/.aliases"
+fi
