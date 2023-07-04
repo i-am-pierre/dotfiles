@@ -27,7 +27,6 @@ setopt PROMPT_SUBST
 NEWLINE=$'\n'
 PROMPT='[%F{green}%n@%m%f] %F{cyan}%~%f ${vcs_info_msg_0_}$NEWLINE> '
 
-
 # Configure completions for Homebrew
 if [ $(command -v brew) ] ; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -42,6 +41,11 @@ fi
 
 # Allows your gpg passphrase prompt to spawn (useful for signing commits).
 export GPG_TTY="$(tty)"
+
+# Bat Theme
+if [ $(command -v bat) ] ; then
+  export BAT_THEME="Visual Studio Dark+"
+fi
 
 # Load Aliases
 if [ -f "$ZDOTDIR/.aliases" ] ; then
