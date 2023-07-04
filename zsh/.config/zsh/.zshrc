@@ -21,10 +21,12 @@ autoload -Uz compinit && compinit
 autoload -Uz vcs_info # Enable vcs_info
 precmd() { vcs_info } # Always load before displaying the prompt
 
-zstyle ':vcs_info:git:*' formats '(%b) '
+zstyle ':vcs_info:git:*' formats '(%F{red}%b%f)'
 
 setopt PROMPT_SUBST
-PROMPT='%n@%m: %F{cyan}%~%f %F{red}${vcs_info_msg_0_}%f'
+NEWLINE=$'\n'
+PROMPT='[%F{green}%n@%m%f] %F{cyan}%~%f ${vcs_info_msg_0_}$NEWLINE> '
+
 
 # Configure completions for Homebrew
 if [ $(command -v brew) ] ; then
