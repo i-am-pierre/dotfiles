@@ -7,21 +7,24 @@ xcode-select --install
 ```
 
 
-1. Run the install.sh script located in the .dotfile/scipts/ folder:
+1. Clone your dotfiles repo into new hidden directory:
 ```zsh
+git clone https://github.com/i-am-pierre/dotfiles.git ~/.dotfiles
+```
+
+
+2. Run the install.sh script located in the .dotfile/scripts/ folder:
+```zsh
+# move into your .dotfiles/ directory:
+cd .dotfile/scripts/
+
+# Use the install script
 ./install.sh
 ```
 
 ```zsh
 # Add brew to PATH temporarily
 eval "$(/opt/homebrew/bin/brew shellenv)"
-```
-
-
-2. Clone your dotfiles repo into new hidden directory:
-```zsh
-# Use HTTPS
-git clone https://github.com/i-am-pierre/dotfiles.git ~/.dotfiles
 ```
 
 
@@ -59,7 +62,7 @@ exec zsh -l
 
 6. Clean old zsh related files:
 ```zsh
-rm -rf .zsh_sessions && rm .zsh_history
+rm -rf ~/.zsh_sessions && rm ~/.zsh_history
 ```
 
 
