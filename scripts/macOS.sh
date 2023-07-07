@@ -90,11 +90,11 @@ if [ -f "com.apple.Terminal.plist" ] ; then
   cp com.apple.Terminal.plist $HOME/Library/Preferences
 fi
 
-for app in "Activity Monitor" 
+for app in "Activity Monitor" \
 	"Dock" \
 	"Finder" \
-	"Safari" \
-	"Terminal"; do
+	"Safari" \ ; do
 	killall "${app}" &> /dev/null
 done
+
 echo "Done. Note that some of these changes require a logout/restart to take effect."
