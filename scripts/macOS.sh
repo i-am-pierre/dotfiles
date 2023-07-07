@@ -80,10 +80,21 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 # Warn about fraudulent websites
 defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
 
-for app in "Activity Monitor" \
+###############################################################################
+# Terminal                                                                    #
+###############################################################################
+
+echo "Terminal..."
+# Copy my prefences plist into ~/Library/Prefrences
+if [ -f "com.apple.Terminal.plist" ] ; then
+  cp com.apple.Terminal.plist $HOME/Library/Preferences
+fi
+
+for app in "Activity Monitor" 
 	"Dock" \
 	"Finder" \
-	"Safari"; do
+	"Safari" \
+	"Terminal"; do
 	killall "${app}" &> /dev/null
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
