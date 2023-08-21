@@ -12,6 +12,11 @@ xcode-select --install
 git clone https://github.com/i-am-pierre/dotfiles.git ~/.dotfiles
 ```
 
+UAT version
+```zsh
+git clone https://gitlab.com/i-am-pierre/dotfiles_uat.git ~/.dotfiles
+```
+
 
 2. Run the install.sh script located in the .dotfile/scripts/ folder:
 ```zsh
@@ -47,10 +52,10 @@ brew bundle dump --file ~/.dotfiles/Brewfile --describe
 cd .dotfiles
 
 # Test your stow command first to stow your 'zsh', 'git' and 'asdf' folders:
-stow -nvSt ~ zsh git asdf vim
+stow -nvSt ~ asdf git tmux vim zsh
 
 # If everything looks good, do it for real:
-stow -vSt ~ zsh git asdf vim
+stow -vSt ~ asdf git tmux vim zsh
 ```
 
 
