@@ -5,8 +5,6 @@
 
 my_os=$(uname -s)
 
-set -x
-
 case $my_os in
     'Linux')
         echo -e "### You are using Linux \n"
