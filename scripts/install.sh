@@ -5,30 +5,40 @@
 my_os=$(uname -s)
 case $my_os in
     'Linux')
-        echo "You are using Linux"
+        echo -e "You are using Linux \n"
+	
+	# Create structure
+	echo -e "Creating working .config structure \n"
+	mkdir -p $HOME/.config/{zsh,git,vim}
         ;;
     'FreeBSD')
-        echo "You are using FreeBSD"
-        ;;
+        echo -e "You are using FreeBSD \n"
+	
+	# Create structure
+	echo -e "Creating working .config structure \n"
+	mkdir -p $HOME/.config/{zsh,git,vim}
+	;;
     'Darwin')
-        echo "You Are using macOS"
+        echo -e "You Are using macOS \n"
+        
+	# Create structure
+	echo -e "Creating working .config structure \n"
+	mkdir -p $HOME/.config/{zsh,git,vim,asdf}
+        
         # Source macOS.sh to make it more usable
-        echo "Sourcing macOS.sh script"
+        echo -e "Sourcing macOS.sh script \n"
         source ./macOS.sh
         # Install Brew and add it to PATH temporarily
-        echo "Installing Homebrew"
+        echo -e "Installing Homebrew \n"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         ;;
     *)
-        echo "You are using something else, $my_os"
+        echo -e "You are using something else, $my_os \n"
         ;;
 esac
 #################
 
 
-# Create structure
-echo "\n Creating working .config structure"
-mkdir -p $HOME/.config/{zsh,git,asdf,vim}
 #
 # Test for content of the .dotfile/ directory to get a list of rep to be created
 #
@@ -41,4 +51,4 @@ mkdir -p $HOME/.config/{zsh,git,asdf,vim}
 # TBA
 #
 #################
-echo "\n Install completed"
+echo -e  "Install completed\n"
