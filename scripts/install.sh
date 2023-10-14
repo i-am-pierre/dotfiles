@@ -1,42 +1,52 @@
-# !/usr/bin/env sh
+#!/usr/bin/env bash
 # File: install.sh
 
 # Test for the platform and install brew or use pkg or apt to install packages
+
+my_apt_list=( 
+    git 
+    vim 
+    zsh 
+    stow
+)
 
 my_os=$(uname -s)
 
 case $my_os in
     'Linux')
-        echo  "### You are using Linux \n"
-	
-    	# Create structure
-	    echo  "### Creating working .config structure \n"
+        echo -e "### You are usinf Linux \n"
+        
+        # Installing my_apt_list
+        echo -e "### Installing >>>: ${my_apt_list[*]} \n"
+        sudo apt update && sudo apt install -y "${my_apt_list[@]}"
+
+    	# Create structure for .config files
+	    echo -e "### Creating working .config structure \n"
 	    mkdir -p $HOME/.config/{zsh,git,vim}
-        sudo apt update && sudo apt install 
         ;;
     'FreeBSD')
         echo  "### You are using FreeBSD \n"
 	
 	    # Create structure
-	    echo  "### Creating working .config structure \n"
+	    echo -e "### Creating working .config structure \n"
 	    mkdir -p $HOME/.config/{zsh,git,vim}
 	;;
     'Darwin')
-        echo  "### You Are using macOS \n"
+        echo -e "### You are using macOS \n"
         
 	    # Create structure
-	    echo  "### Creating working .config structure \n"
+	    echo -e "### Creating working .config structure \n"
 	    mkdir -p $HOME/.config/{zsh,git,vim,asdf}
         
         # Source macOS.sh to make it more usable
-        echo  "### Sourcing macOS.sh script \n"
+        echo -e "### Sourcing macOS.sh script \n"
         source ./macOS.sh
         # Install Brew and add it to PATH temporarily
-        echo  "### Installing Homebrew \n"
+        echo -e "### Installing Homebrew \n"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         ;;
     *)
-        echo  "### You are using something else, $my_os \n"
+        echo -e "### You are using something else, $my_os \n"
         ;;
 esac
 #################
@@ -54,4 +64,4 @@ esac
 # TBA
 #
 #################
-echo "Install completed\n"
+echo -e "### Install completed\n"
