@@ -7,35 +7,36 @@ my_os=$(uname -s)
 
 case $my_os in
     'Linux')
-        echo -e "### You are using Linux \n"
+        echo  "### You are using Linux \n"
 	
     	# Create structure
-	    echo -e "### Creating working .config structure \n"
+	    echo  "### Creating working .config structure \n"
 	    mkdir -p $HOME/.config/{zsh,git,vim}
+        sudo apt update && sudo apt install 
         ;;
     'FreeBSD')
-        echo -e "### You are using FreeBSD \n"
+        echo  "### You are using FreeBSD \n"
 	
 	    # Create structure
-	    echo -e "### Creating working .config structure \n"
+	    echo  "### Creating working .config structure \n"
 	    mkdir -p $HOME/.config/{zsh,git,vim}
 	;;
     'Darwin')
-        echo -e "### You Are using macOS \n"
+        echo  "### You Are using macOS \n"
         
 	    # Create structure
-	    echo -e "### Creating working .config structure \n"
+	    echo  "### Creating working .config structure \n"
 	    mkdir -p $HOME/.config/{zsh,git,vim,asdf}
         
         # Source macOS.sh to make it more usable
-        echo -e "### Sourcing macOS.sh script \n"
+        echo  "### Sourcing macOS.sh script \n"
         source ./macOS.sh
         # Install Brew and add it to PATH temporarily
-        echo -e "### Installing Homebrew \n"
+        echo  "### Installing Homebrew \n"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         ;;
     *)
-        echo -e "### You are using something else, $my_os \n"
+        echo  "### You are using something else, $my_os \n"
         ;;
 esac
 #################
@@ -53,4 +54,4 @@ esac
 # TBA
 #
 #################
-echo -e  "Install completed\n"
+echo "Install completed\n"
