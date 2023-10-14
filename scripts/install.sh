@@ -9,23 +9,23 @@ case $my_os in
     'Linux')
         echo -e "### You are using Linux \n"
 	
-	# Create structure
-	echo -e "### Creating working .config structure \n"
-	mkdir -p $HOME/.config/{zsh,git,vim}
+    	# Create structure
+	    echo -e "### Creating working .config structure \n"
+	    mkdir -p $HOME/.config/{zsh,git,vim}
         ;;
     'FreeBSD')
         echo -e "### You are using FreeBSD \n"
 	
-	# Create structure
-	echo -e "### Creating working .config structure \n"
-	mkdir -p $HOME/.config/{zsh,git,vim}
+	    # Create structure
+	    echo -e "### Creating working .config structure \n"
+	    mkdir -p $HOME/.config/{zsh,git,vim}
 	;;
     'Darwin')
         echo -e "### You Are using macOS \n"
         
-	# Create structure
-	echo -e "### Creating working .config structure \n"
-	mkdir -p $HOME/.config/{zsh,git,vim,asdf}
+	    # Create structure
+	    echo -e "### Creating working .config structure \n"
+	    mkdir -p $HOME/.config/{zsh,git,vim,asdf}
         
         # Source macOS.sh to make it more usable
         echo -e "### Sourcing macOS.sh script \n"
