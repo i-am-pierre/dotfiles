@@ -1,4 +1,4 @@
-# !/usr/bin/env zsh
+#!/usr/bin/env bash
 # File: macOS.sh
 
 # Close any open System Preferences panes, to prevent them from overriding
@@ -97,4 +97,4 @@ for app in "Activity Monitor" \
 	killall "${app}" &> /dev/null
 done
 
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+echo -e "Done. Some of these changes require a logout/restart to take effect."

@@ -1,17 +1,16 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 # File: install.sh
-
-# Test for the platform and install brew or use pkg or apt to install packages
 
 my_apt_list=( 
     git 
+    stow
     vim 
     zsh 
-    stow
 )
 
 my_os=$(uname -s)
 
+# Test for the platform and install brew or use pkg or apt to install packages
 case $my_os in
     'Linux')
         echo -e "### You are usinf Linux \n"
@@ -22,21 +21,23 @@ case $my_os in
 
     	# Create structure for .config files
 	    echo -e "### Creating working .config structure \n"
-	    mkdir -p $HOME/.config/{zsh,git,vim}
+	    mkdir -p "$HOME"/.config/{zsh,git,vim}
         ;;
+
     'FreeBSD')
-        echo  "### You are using FreeBSD \n"
+        echo -e "### You are using FreeBSD \n"
 	
 	    # Create structure
 	    echo -e "### Creating working .config structure \n"
-	    mkdir -p $HOME/.config/{zsh,git,vim}
+	    mkdir -p "$HOME"/.config/{zsh,git,vim}
 	;;
+
     'Darwin')
         echo -e "### You are using macOS \n"
         
 	    # Create structure
 	    echo -e "### Creating working .config structure \n"
-	    mkdir -p $HOME/.config/{zsh,git,vim,asdf}
+	    mkdir -p "$HOME"/.config/{zsh,git,vim,asdf}
         
         # Source macOS.sh to make it more usable
         echo -e "### Sourcing macOS.sh script \n"
@@ -45,6 +46,7 @@ case $my_os in
         echo -e "### Installing Homebrew \n"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         ;;
+        
     *)
         echo -e "### You are using something else, $my_os \n"
         ;;
