@@ -2,8 +2,10 @@
 # File: install.sh
 
 my_apt_list=( 
+    bat
     git 
     stow
+    tmux
     vim 
     zsh 
 )
