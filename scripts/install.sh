@@ -10,6 +10,15 @@ my_apt_list=(
     zsh 
 )
 
+my_pkg_list=( 
+    bat
+    git 
+    stow
+    tmux
+    vim 
+    zsh 
+)
+
 my_os=$(uname -s)
 
 # Test for the platform and install brew or use pkg or apt to install packages
@@ -27,20 +36,33 @@ case $my_os in
 
         # Stow .dotfiles
         echo -e "### Creating simlink using Stow"
-        cd ~/.dotfiles
+        cd ~/.dotfiles || exit
         stow -vSt ~ git tmux vim zsh
 
         # Updating shell to zsh for user
         echo -e "### Updating shell to zsh"
-        chsh -s /bin/zsh $USER
+        chsh -s /bin/zsh "$USER"
         ;;
 
     'FreeBSD')
         echo -e "### You are using FreeBSD \n"
 	
-	    # Create structure
+	    # Installing my_pkg_list
+        echo -e "### Installing >>>: ${my_pkg_list[*]} \n"
+        sudo pkg update && sudo pkg install -y "${my_pkg_list[@]}"
+
+    	# Create structure for .config files
 	    echo -e "### Creating working .config structure \n"
 	    mkdir -p "$HOME"/.config/{zsh,git,vim}
+
+        # Stow .dotfiles
+        echo -e "### Creating simlink using Stow"
+        cd ~/.dotfiles || exit
+        stow -vSt ~ git tmux vim zsh
+
+        # Updating shell to zsh for user
+        echo -e "### Updating shell to zsh"
+        chsh -s usr/local/bin/zsh "$USER"
 	;;
 
     'Darwin')
@@ -63,20 +85,10 @@ case $my_os in
         ;;
 esac
 #################
-
-
 #
 # Test for content of the .dotfile/ directory to get a list of rep to be created
 #
 #################
 
-
-
-# Use Stow or Ln to make links
-#
-# TBA
-#
-#################
 echo -e "### Install completed"
-echo -e "### Consider exec zsh -l to laod zsh now\n"
-
+echo -e "### Consider exec zsh -l to load zsh now\n or logout"
