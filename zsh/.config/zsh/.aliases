@@ -5,6 +5,7 @@ if [[ $(uname) == Linux ]] ; then
   alias grep="grep --color=auto"
   alias fgrep="fgrep --color=auto"
   alias egrep="egrep --color=auto"
+  alias bat="batcat" # bat is better than batcat
 else
   alias ls="ls -G"
   alias grep="grep -G"
