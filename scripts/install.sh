@@ -22,6 +22,15 @@ case $my_os in
     	# Create structure for .config files
 	    echo -e "### Creating working .config structure \n"
 	    mkdir -p "$HOME"/.config/{zsh,git,vim}
+
+        # Stow .dotfiles
+        echo -e "### Creating simlink using Stow"
+        cd ~/.dotfiles
+        stow -vSt ~ git tmux vim zsh
+
+        # Updating shell to zsh for user
+        echo -e "### Updating shell to zsh"
+        chsh -s /bin/zsh $USER
         ;;
 
     'FreeBSD')
@@ -66,4 +75,6 @@ esac
 # TBA
 #
 #################
-echo -e "### Install completed\n"
+echo -e "### Install completed"
+echo -e "### Consider exec zsh -l to laod zsh now\n"
+
