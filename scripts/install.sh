@@ -44,7 +44,7 @@ case $my_os in
         chsh -s /bin/zsh "$USER"
         ;;
 
-    'FreeBSD')
+    'FreeBSD') # Only works if bash is installed for now
         echo -e "### You are using FreeBSD \n"
 	
 	    # Installing my_pkg_list
@@ -75,6 +75,7 @@ case $my_os in
         # Source macOS.sh to make it more usable
         echo -e "### Sourcing macOS.sh script \n"
         source ./macOS.sh
+        
         # Install Brew and add it to PATH temporarily
         echo -e "### Installing Homebrew \n"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
