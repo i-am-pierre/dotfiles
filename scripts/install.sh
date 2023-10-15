@@ -62,7 +62,7 @@ case $my_os in
 
         # Updating shell to zsh for user
         echo -e "### Updating shell to zsh"
-        chsh -s usr/local/bin/zsh "$USER"
+        chsh -s /usr/local/bin/zsh "$USER"
 	;;
 
     'Darwin')
