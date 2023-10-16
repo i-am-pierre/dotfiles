@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # File: macOS.sh
 
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
+# Close any open System Preferences panes to prevent conflicts
 osascript -e 'tell application "System Preferences" to quit'
 
 echo "Setting up my Defaults:"
@@ -97,4 +96,4 @@ for app in "Activity Monitor" \
 	killall "${app}" &> /dev/null
 done
 
-echo -e "Done. Some of these changes require a logout/restart to take effect."
+echo -e "Done. Some of these changes may require a logout/restart to take effect."

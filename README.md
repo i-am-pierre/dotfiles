@@ -142,7 +142,8 @@ To be continued...
 pw groupmod wheel -m pierre
 # use visudo to update sudoers
 visudo
-#uncomment wheel group behavior
+#uncomment the following to allow members of wheel to execute any command
+%wheel ALL=(All:ALL) All
 ```
 
 0. Install git if git isn't installed ans make sure user has sudo priviladges.
@@ -170,7 +171,7 @@ git clone https://gitlab.com/i-am-pierre/dotfiles_uat.git ~/.dotfiles
 cd .dotfile/scripts/
 
 # Use the install script
-./install.sh
+bash ./install.sh
 ```
 
 3. Logout and log back into your account
