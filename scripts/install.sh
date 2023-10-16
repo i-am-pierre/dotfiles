@@ -1,14 +1,5 @@
-#!/usr/bin/bash
+#!/bin/bash
 # File: install.sh
-
-my_apt_list=( 
-    bat
-    git 
-    stow
-    tmux
-    vim 
-    zsh 
-)
 
 my_pkg_list=( 
     bat
@@ -21,14 +12,17 @@ my_pkg_list=(
 
 my_os=$(uname -s)
 
-# Test for the platform and install brew or use pkg or apt to install packages
+# Test for the platform and install packages accordingly
 case $my_os in
     'Linux')
-        echo -e "### You are usinf Linux \n"
-        
-        # Installing my_apt_list
-        echo -e "### Installing >>>: ${my_apt_list[*]} \n"
-        sudo apt update && sudo apt install -y "${my_apt_list[@]}"
+        if [ -x "$(command -v apt)" ]; then
+            # Debian-based Linux (e.g., Ubuntu)
+            echo -e "### You are using Debian-based Linux \n"
+            sudo apt update && sudo apt install -y "${my_pkg_list[@]}"
+        else
+            echo -e "### Unsupported Linux distribution \n"
+            exit 1
+        fi
 
     	# Create structure for .config files
 	    echo -e "### Creating working .config structure \n"
@@ -44,13 +38,15 @@ case $my_os in
         chsh -s /bin/zsh "$USER"
         ;;
 
-    'FreeBSD') # Only works if bash is installed for now
-        echo -e "### You are using FreeBSD \n"
-	
-	    # Installing my_pkg_list
-        echo -e "### Installing >>>: ${my_pkg_list[*]} \n"
-        sudo pkg update && sudo pkg install -y "${my_pkg_list[@]}"
-
+      'FreeBSD')
+        if [ -x "$(command -v pkg)" ]; then
+            echo -e "### You are using FreeBSD \n"
+            sudo pkg update && sudo pkg install -y "${my_pkg_list[@]}"
+        else
+            echo -e "### Unsupported OS (FreeBSD with pkg not found) \n"
+            exit 1
+        fi
+       
     	# Create structure for .config files
 	    echo -e "### Creating working .config structure \n"
 	    mkdir -p "$HOME"/.config/{zsh,git,vim}
@@ -65,12 +61,12 @@ case $my_os in
         chsh -s /usr/local/bin/zsh "$USER"
 	;;
 
-    'Darwin')
+      'Darwin')
         echo -e "### You are using macOS \n"
         
-	    # Create structure
-	    echo -e "### Creating working .config structure \n"
-	    mkdir -p "$HOME"/.config/{zsh,git,vim,asdf}
+        # Create structure
+        echo -e "### Creating working .config structure \n"
+        mkdir -p "$HOME"/.config/{zsh,git,vim,asdf}
         
         # Source macOS.sh to make it more usable
         echo -e "### Sourcing macOS.sh script \n"
@@ -82,14 +78,9 @@ case $my_os in
         ;;
         
     *)
-        echo -e "### You are using something else, $my_os \n"
+        echo -e "### You are using an unsupported OS, $my_os \n"
         ;;
 esac
-#################
-#
-# Test for content of the .dotfile/ directory to get a list of rep to be created
-#
-#################
 
 echo -e "### Install completed"
 echo -e "### Consider exec zsh -l to load zsh now\n or logout"
