@@ -30,7 +30,7 @@ case $my_os in
 
         # Stow .dotfiles
         echo -e "### Creating simlink using Stow"
-        cd ~/.dotfiles || exit
+        cd ~/.dotfiles || exit 1
         stow -vSt ~ git tmux vim zsh
 
         # Updating shell to zsh for user
@@ -53,7 +53,7 @@ case $my_os in
 
         # Stow .dotfiles
         echo -e "### Creating simlink using Stow"
-        cd ~/.dotfiles || exit
+        cd ~/.dotfiles || exit 1
         stow -vSt ~ git tmux vim zsh
 
         # Updating shell to zsh for user
