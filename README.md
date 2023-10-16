@@ -1,6 +1,6 @@
 # Steps to bootstrap a new system
 
-The goal of all of this is to quickly install dottiles and apps on mulitple platforms.
+The goal of all of this is to quickly install dotfiles and apps on mulitple platforms.
 
 ## macOS
 
