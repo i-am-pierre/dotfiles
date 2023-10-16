@@ -1,5 +1,7 @@
 # Steps to bootstrap a new system
 
+The goal of all of this is to quickly install dottiles and apps on mulitple platforms.
+
 ## macOS
 
 0. Install Apple's Command Line Tool (if needed)
@@ -8,13 +10,13 @@
 xcode-select --install
 ```
 
-1. Clone your dotfiles repo into ~/.dotfiles:
+1. Clone dotfiles repository into ~/.dotfiles:
 
 ```zsh
 git clone https://github.com/i-am-pierre/dotfiles.git ~/.dotfiles
 ```
 
-UAT version
+UAT reporsitory:
 
 ```zsh
 git clone https://gitlab.com/i-am-pierre/dotfiles_uat.git ~/.dotfiles
@@ -35,7 +37,7 @@ cd .dotfile/scripts/
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-3. Install the software listed in the Brewfile:
+3. Install softwares listed in the Brewfile:
 
 ```zsh
 # Then pass in the Brewfile location...
@@ -79,11 +81,11 @@ rm -rf ~/.zsh_sessions && rm ~/.zsh_history
 rm -f ~/.zcompdump; compinit
 ```
 
-8. Set your SSH and PGP Keys following [YubiKey-Guide](https://github.com/drduh/YubiKey-Guide)
+8. Setup your SSH and PGP Keys following [YubiKey-Guide](https://github.com/drduh/YubiKey-Guide)
 
 9. Setup [asdf](https://asdf-vm.com/guide/getting-started.htm)
 
-10. You can consider updating updating your git remote url to use ssh instead
+10. You can consider updating your git remote repository url to use ssh instead
 
 ```zsh
 git remote --set-url origin git@gitlab.com:i-am-pierre/dotfiles_uat.git
@@ -99,13 +101,13 @@ To be continued...
 sudo apt update && sudo apt install -y git
 ```
 
-1. Clone your dotfiles repo into ~/.dotfiles:
+1. Clone dotfiles repository into ~/.dotfiles:
 
 ```zsh
 git clone https://github.com/i-am-pierre/dotfiles.git ~/.dotfiles
 ```
 
-UAT version
+UAT reporsitory:
 
 ```zsh
 git clone https://gitlab.com/i-am-pierre/dotfiles_uat.git ~/.dotfiles
@@ -121,9 +123,9 @@ cd .dotfile/scripts/
 ./install.sh
 ```
 
-3. logout and log back into your account
+3. Logout and log back into your account
 
-4. You can consider updating updating your git remote url to use ssh instead
+4. You can consider updating your git remote repository url to use ssh instead
 
 ```zsh
 git remote --set-url origin git@gitlab.com:i-am-pierre/dotfiles_uat.git
@@ -133,7 +135,7 @@ To be continued...
 
 ## FreeBSD
 
-note: this only works if the user has sudo privi;dges and bash is install for now
+***Note :*** This only works if the user has sudo privildges and bash installed for now
 
 ```zsh
 # add user pierre to wheel
@@ -149,13 +151,13 @@ visudo
 sudo pkg update && sudo pkg install -y git bash
 ```
 
-1. Clone your dotfiles repo into ~/.dotfiles:
+1. Clone dotfiles repository into ~/.dotfiles:
 
 ```zsh
 git clone https://github.com/i-am-pierre/dotfiles.git ~/.dotfiles
 ```
 
-UAT version
+UAT reporsitory:
 
 ```zsh
 git clone https://gitlab.com/i-am-pierre/dotfiles_uat.git ~/.dotfiles
@@ -171,9 +173,9 @@ cd .dotfile/scripts/
 ./install.sh
 ```
 
-3. logout and log back into your account
+3. Logout and log back into your account
 
-4. You can consider updating updating your git remote url to use ssh instead
+4. You can consider updating your git remote repository url to use ssh instead
 
 ```zsh
 git remote --set-url origin git@gitlab.com:i-am-pierre/dotfiles_uat.git
