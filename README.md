@@ -32,12 +32,35 @@ cd .dotfile/scripts/
 ./install.sh
 ```
 
+3. Reload your terminal without killing it:
+
 ```zsh
-# Add brew to PATH temporarily
-eval "$(/opt/homebrew/bin/brew shellenv)"
+exec zsh -l
 ```
 
-3. Install softwares listed in the Brewfile:
+5. Clean old zsh related files:
+
+```zsh
+rm -rf ~/.zsh_sessions && rm ~/.zsh_history
+```
+
+6. Rebuild zcompdump for [autocompletion](https://docs.brew.sh/Shell-Completion)
+
+```zsh
+rm -f ~/.zcompdump; compinit
+```
+
+7. Setup your SSH and PGP Keys following [YubiKey-Guide](https://github.com/drduh/YubiKey-Guide)
+
+8. Setup [asdf](https://asdf-vm.com/guide/getting-started.htm)
+
+9. You can consider updating your git remote repository url to use ssh instead
+
+```zsh
+git remote --set-url origin git@gitlab.com:i-am-pierre/dotfiles_uat.git
+```
+
+FYI Install softwares listed in Brewfile:
 
 ```zsh
 # Then pass in the Brewfile location...
@@ -48,47 +71,6 @@ brew bundle --file ~/.dotfiles/Brewfile --force cleanup
 
 # FYI Creating a detailed Brewfile dump
 brew bundle dump --file ~/.dotfiles/Brewfile --describe
-```
-
-4. Create symlinks in the Home directory to the real files in the repo using [GNU Stow](https://www.gnu.org/software/stow/)
-
-```zsh
-# move into your .dotfiles/ directory:
-cd .dotfiles
-
-# Test your stow command first to stow your 'zsh', 'git' and 'asdf' folders:
-stow -nvSt ~ asdf git tmux vim zsh
-
-# If everything looks good, do it for real:
-stow -vSt ~ asdf git tmux vim zsh
-```
-
-5. Reload your terminal without killing it:
-
-```zsh
-exec zsh -l
-```
-
-6. Clean old zsh related files:
-
-```zsh
-rm -rf ~/.zsh_sessions && rm ~/.zsh_history
-```
-
-7. Rebuild zcompdump for [autocompletion](https://docs.brew.sh/Shell-Completion)
-
-```zsh
-rm -f ~/.zcompdump; compinit
-```
-
-8. Setup your SSH and PGP Keys following [YubiKey-Guide](https://github.com/drduh/YubiKey-Guide)
-
-9. Setup [asdf](https://asdf-vm.com/guide/getting-started.htm)
-
-10. You can consider updating your git remote repository url to use ssh instead
-
-```zsh
-git remote --set-url origin git@gitlab.com:i-am-pierre/dotfiles_uat.git
 ```
 
 To be continued...
