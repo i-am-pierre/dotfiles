@@ -3,7 +3,8 @@
 
 my_pkg_list=( 
     bat
-    git 
+    git
+    pwgen 
     stow
     tmux
     vim 
@@ -41,6 +42,18 @@ install_packages() {
 
         'Darwin')
             echo "### You are using macOS"
+
+            # Install Homebrew
+             echo "### Installing Homebrew"
+             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+             # Additional setup for macOS (asdf)
+            echo "### Creating working .config structure for asdf"
+            mkdir -p "$HOME/.config/asdf"
+    
+            # Source macOS.sh to make it more usable
+             echo "### Sourcing macOS.sh script"
+             source ./macOS.sh
             ;;
 
         *)
@@ -50,35 +63,18 @@ install_packages() {
     esac
 }
 
-# Test for the platform and install packages accordingly
-install_packages "$my_os" my_pkg_list
-
 # Create structure for .config files
 echo "### Creating working .config structure"
 mkdir -p "$HOME/.config/{zsh,git,vim}"
 
 # Stow .dotfiles
 echo "### Creating symlink using Stow"
-cd ~/.dotfiles || exit 1
-stow -vSt ~ git tmux vim zsh
+cd "$HOME/.dotfiles" || exit 1
+stow -vSt "$HOME" git tmux vim zsh
 
 # Updating shell to zsh for the user
 echo "### Updating shell to zsh"
 chsh -s "$(command -v zsh)" "$USER"
-
-if [ "$my_os" == 'Darwin' ]; then
-    # Additional setup for macOS
-    echo "### Creating working .config structure for asdf"
-    mkdir -p "$HOME/.config/asdf"
-    
-    # Source macOS.sh to make it more usable
-    echo "### Sourcing macOS.sh script"
-    source ./macOS.sh
-    
-    # Install Homebrew
-    echo "### Installing Homebrew"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
 
 echo "### Installation completed"
 echo "### Consider running 'exec zsh -l' to load zsh now, or log out"
