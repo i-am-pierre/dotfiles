@@ -44,16 +44,16 @@ install_packages() {
             echo "### You are using macOS"
 
             # Install Homebrew
-             echo "### Installing Homebrew"
-             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            echo "### Installing Homebrew"
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-             # Additional setup for macOS (asdf)
+            # Additional setup for macOS (asdf)
             echo "### Creating working .config structure for asdf"
             mkdir -p "$HOME/.config/asdf"
     
             # Source macOS.sh to make it more usable
-             echo "### Sourcing macOS.sh script"
-             source ./macOS.sh
+            echo "### Sourcing macOS.sh script"
+            source ./macOS.sh
             ;;
 
         *)
