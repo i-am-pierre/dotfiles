@@ -32,8 +32,6 @@ my_os=$(uname -s)
 case $my_os in
     'Linux')
         install_packages apt
-        # Install asdf packages separately
-        sudo apt install -y asdf || { echo "Failed to install asdf packages"; exit 1; }
         ;;
     'FreeBSD')
         install_packages pkg
@@ -68,12 +66,6 @@ esac
 echo "### Creating working .config structure"
 mkdir -p "$HOME/.config/{zsh,git,vim}"
 
-if [[ $my_os == Linux ]] || [[ $my_os == Darwin ]]; then
-    # Create structure for .config files for asdf
-    echo "### Creating working .config structure for asdf"
-    mkdir -p "$HOME/.config/asdf"
-fi
-
 # Stow .dotfiles
 echo "### Creating symlink using Stow"
 cd "$HOME/.dotfiles" || { echo "Failed to change directory"; exit 1; }
@@ -81,6 +73,22 @@ if [ -x "$(command -v stow)" ]; then
     stow -vSt "$HOME" git tmux vim zsh || { echo "Failed to stow dotfiles"; exit 1; }
 else
     echo "Stow not found. Please install it."
+fi
+
+# Structure and simlink for asdf on macOS
+if [[ $my_os == Darwin ]]; then
+    # Create structure for .config files for asdf
+    echo "### Creating working .config structure for asdf"
+    mkdir -p "$HOME/.config/asdf"
+
+    # Stow .dotfile asdf only
+    echo "### Creating symlink using Stow"
+    cd "$HOME/.dotfiles" || { echo "Failed to change directory"; exit 1; }
+    if [ -x "$(command -v stow)" ]; then
+        stow -vSt "$HOME" asdf || { echo "Failed to stow dotfiles"; exit 1; }
+    else
+        echo "Stow not found. Please install it."
+    fi
 fi
 
 # Updating shell to zsh for the user
