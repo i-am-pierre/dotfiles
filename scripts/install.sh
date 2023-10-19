@@ -1,57 +1,66 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # File: install.sh
 
-my_pkg_list=( 
+# Define package list
+pkg_list=( 
     bat
-    git 
+    git
+    pwgen 
     stow
     tmux
     vim 
     zsh 
 )
 
-my_os=$(uname -s)
-
-# Install function
+# Function to install packages
 install_packages() {
-    local os=$1
-    local pkg_list=("${!2}")
+    local package_manager="$1"
+    shift
+    echo "### You are using $package_manager"
 
-    case $os in
-        'Linux')
-            if [ -x "$(command -v apt)" ]; then
-                # Debian-based Linux (e.g., Ubuntu)
-                echo "### You are using Debian-based Linux"
-                sudo apt update && sudo apt install -y "${pkg_list[@]}"
-            else
-                echo "### Unsupported Linux distribution"
-                exit 1
-            fi
-            ;;
-
-        'FreeBSD')
-            if [ -x "$(command -v pkg)" ]; then
-                echo "### You are using FreeBSD"
-                sudo pkg update && sudo pkg install -y "${pkg_list[@]}"
-            else
-                echo "### Unsupported OS (FreeBSD with pkg not found)"
-                exit 1
-            fi
-            ;;
-
-        'Darwin')
-            echo "### You are using macOS"
-            ;;
-
-        *)
-            echo "### You are using an unsupported OS, $my_os"
-            exit 1
-            ;;
-    esac
+    if [ -x "$(command -v $package_manager)" ]; then
+        sudo $package_manager update && sudo $package_manager install -y "${pkg_list[@]}" || { echo "Failed to install packages"; exit 1; }
+    else
+        echo "### $package_manager not found. Please install it."
+        exit 1
+    fi
 }
 
-# Test for the platform and install packages accordingly
-install_packages "$my_os" my_pkg_list
+# Get OS information
+my_os=$(uname -s)
+
+case $my_os in
+    'Linux')
+        install_packages apt
+        ;;
+    'FreeBSD')
+        install_packages pkg
+        ;;
+    'Darwin')
+        echo "### You are using macOS"
+        if ! [ -x "$(command -v brew)" ]; then
+            # Install Homebrew if it's not already installed
+            echo "### Installing Homebrew"
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || { echo "Failed to install Homebrew"; exit 1; }
+        fi
+
+        # Add brew to PATH temporarily
+        echo "### Adding brew to PATH temporarily"
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+
+        # Then pass in the Brewfile location...
+        echo "### Installing content of the Brewfile"
+        brew bundle --file "$HOME/.dotfiles/Brewfile"
+    
+        # Source macOS.sh to make it more usable
+        echo "### Sourcing macOS.sh script"
+        source "$HOME/.dotfiles/macOS.sh" || { echo "Failed to source macOS.sh"; exit 1; }
+        ;;
+    *)
+        echo "### You are using an unsupported OS, $my_os"
+        exit 1
+        ;;
+esac
 
 # Create structure for .config files
 echo "### Creating working .config structure"
@@ -59,26 +68,32 @@ mkdir -p "$HOME/.config/{zsh,git,vim}"
 
 # Stow .dotfiles
 echo "### Creating symlink using Stow"
-cd ~/.dotfiles || exit 1
-stow -vSt ~ git tmux vim zsh
+cd "$HOME/.dotfiles" || { echo "Failed to change directory"; exit 1; }
+if [ -x "$(command -v stow)" ]; then
+    stow -vSt "$HOME" git tmux vim zsh || { echo "Failed to stow dotfiles"; exit 1; }
+else
+    echo "Stow not found. Please install it."
+fi
+
+# Structure and simlink for asdf on macOS
+if [[ $my_os == Darwin ]]; then
+    # Create structure for .config files for asdf
+    echo "### Creating working .config structure for asdf"
+    mkdir -p "$HOME/.config/asdf"
+
+    # Stow .dotfile asdf only
+    echo "### Creating symlink using Stow"
+    cd "$HOME/.dotfiles" || { echo "Failed to change directory"; exit 1; }
+    if [ -x "$(command -v stow)" ]; then
+        stow -vSt "$HOME" asdf || { echo "Failed to stow dotfiles"; exit 1; }
+    else
+        echo "Stow not found. Please install it."
+    fi
+fi
 
 # Updating shell to zsh for the user
 echo "### Updating shell to zsh"
-chsh -s "$(command -v zsh)" "$USER"
-
-if [ "$my_os" == 'Darwin' ]; then
-    # Additional setup for macOS
-    echo "### Creating working .config structure for asdf"
-    mkdir -p "$HOME/.config/asdf"
-    
-    # Source macOS.sh to make it more usable
-    echo "### Sourcing macOS.sh script"
-    source ./macOS.sh
-    
-    # Install Homebrew
-    echo "### Installing Homebrew"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
+chsh -s "$(command -v zsh)" "$USER" || { echo "Failed to update shell to zsh"; exit 1; }
 
 echo "### Installation completed"
 echo "### Consider running 'exec zsh -l' to load zsh now, or log out"
