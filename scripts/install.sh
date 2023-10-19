@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # File: install.sh
 
 my_pkg_list=( 
@@ -23,7 +23,7 @@ install_packages() {
             if [ -x "$(command -v apt)" ]; then
                 # Debian-based Linux (e.g., Ubuntu)
                 echo "### You are using Debian-based Linux"
-                sudo apt update && sudo apt install -y "${pkg_list[@]}"
+                sudo apt update && sudo apt install -y "${pkg_list[@]}" || { echo "Failed to install packages"; exit 1; }
             else
                 echo "### Unsupported Linux distribution"
                 exit 1
@@ -33,7 +33,7 @@ install_packages() {
         'FreeBSD')
             if [ -x "$(command -v pkg)" ]; then
                 echo "### You are using FreeBSD"
-                sudo pkg update && sudo pkg install -y "${pkg_list[@]}"
+                sudo pkg update && sudo pkg install -y "${pkg_list[@]}" || { echo "Failed to install packages"; exit 1; }
             else
                 echo "### Unsupported OS (FreeBSD with pkg not found)"
                 exit 1
@@ -43,9 +43,11 @@ install_packages() {
         'Darwin')
             echo "### You are using macOS"
 
-            # Install Homebrew
-            echo "### Installing Homebrew"
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            if ! [ -x "$(command -v brew)" ]; then
+                # Install Homebrew if it's not already installed
+                echo "### Installing Homebrew"
+                /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || { echo "Failed to install Homebrew"; exit 1; }
+            fi
 
             # Additional setup for macOS (asdf)
             echo "### Creating working .config structure for asdf"
@@ -63,18 +65,24 @@ install_packages() {
     esac
 }
 
+# Check if HOME is set
+if [ -z "$HOME" ]; then
+    echo "The HOME environment variable is not set. Please set it before running this script."
+    exit 1
+fi
+
 # Create structure for .config files
 echo "### Creating working .config structure"
 mkdir -p "$HOME/.config/{zsh,git,vim}"
 
 # Stow .dotfiles
 echo "### Creating symlink using Stow"
-cd "$HOME/.dotfiles" || exit 1
-stow -vSt "$HOME" git tmux vim zsh
+cd "$HOME/.dotfiles" || { echo "Failed to change directory"; exit 1; }
+stow -vSt "$HOME" git tmux vim zsh || { echo "Failed to stow dotfiles"; exit 1; }
 
 # Updating shell to zsh for the user
 echo "### Updating shell to zsh"
-chsh -s "$(command -v zsh)" "$USER"
+chsh -s "$(command -v zsh)" "$USER" || { echo "Failed to update shell to zsh"; exit 1; }
 
 echo "### Installation completed"
 echo "### Consider running 'exec zsh -l' to load zsh now, or log out"
