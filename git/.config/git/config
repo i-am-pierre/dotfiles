@@ -3,9 +3,9 @@
 	email = i_am_pierre@icloud.com
 	signingkey = "0x9B2163E6A072FE32"
 [commit]
-    gpgsign = true
+#    gpgsign = true
 [tag]
-    gpgSign = true
+ #   gpgSign = true
 [core]
 	excludesfile = $XDG_CONFIG_HOME/git/.gitignore_global
 	editor = code --wait --new-window
