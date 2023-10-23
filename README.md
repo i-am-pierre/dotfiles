@@ -75,9 +75,9 @@ brew bundle dump --file ~/.dotfiles/Brewfile --describe
 
 To be continued...
 
-## Linux (Debian and Ubuntu, using apt package manager)
+## GNU/Linux (Debian and Ubuntu, using apt package manager)
 
-0. Install git if git isn't installed ans make sure user has sudo priviladges.
+0. Install git if git isn't installed and make sure user has sudo priviladges.
 
 ```zsh
 sudo apt update && sudo apt install -y git
@@ -128,7 +128,7 @@ visudo
 %wheel ALL=(All:ALL) All
 ```
 
-0. Install git if git isn't installed ans make sure user has sudo priviladges.
+0. Install git if git isn't installed and make sure user has sudo priviladges.
 
 ```zsh
 sudo pkg update && sudo pkg install -y git bash
