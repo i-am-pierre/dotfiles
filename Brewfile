@@ -9,8 +9,6 @@ brew "readline"
 brew "asdf"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Passphrase entry dialog utilizing the Assuan protocol
 brew "pinentry"
 # GNU Pretty Good Privacy (PGP) package
@@ -21,6 +19,8 @@ brew "hopenpgp-tools"
 brew "htop"
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "iperf3"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Provides library functionality for FIDO U2F & FIDO 2.0, including USB
 brew "libfido2"
 # Port scanning utility for large networks
@@ -53,6 +53,10 @@ cask "appcleaner"
 cask "istat-menus"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-live"
+# Clipboard manager
+cask "maccy"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
 # Graphical client for Git version control
 cask "sourcetree"
 # VPN client for secure internet access and private browsing
@@ -63,8 +67,6 @@ cask "utm"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
-# Network protocol analyzer
-cask "wireshark"
 # Application for generating TOTP and HOTP codes
 cask "yubico-authenticator"
 # Application for configuring any YubiKey
@@ -73,3 +75,4 @@ vscode "DavidAnson.vscode-markdownlint"
 vscode "mhutchie.git-graph"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "timonwong.shellcheck"
