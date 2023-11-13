@@ -54,7 +54,7 @@ case $my_os in
     
         # Source macOS.sh to make it more usable
         echo "### Sourcing macOS.sh script"
-        source "$HOME/.dotfiles/macOS.sh" || { echo "Failed to source macOS.sh"; exit 1; }
+        source "$HOME/.dotfiles/scripts/macOS.sh" || { echo "Failed to source macOS.sh"; exit 1; }
         ;;
     *)
         echo "### You are using an unsupported OS, $my_os"
