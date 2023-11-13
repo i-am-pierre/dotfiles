@@ -50,11 +50,11 @@ case $my_os in
 
         # Then pass in the Brewfile location...
         echo "### Installing content of the Brewfile"
-        brew bundle --file "$HOME/.dotfiles/Brewfile"
+        brew bundle --file "$HOME"/.dotfiles/Brewfile
     
         # Source macOS.sh to make it more usable
         echo "### Sourcing macOS.sh script"
-        source "$HOME/.dotfiles/scripts/macOS.sh" || { echo "Failed to source macOS.sh"; exit 1; }
+        source "$HOME"/.dotfiles/scripts/macOS.sh || { echo "Failed to source macOS.sh"; exit 1; }
         ;;
     *)
         echo "### You are using an unsupported OS, $my_os"
@@ -64,7 +64,7 @@ esac
 
 # Create structure for .config files
 echo "### Creating working .config structure"
-mkdir -p "$HOME/.config/{zsh,git,vim}"
+mkdir -p "$HOME"/.config/{zsh,git,vim}
 
 # Stow .dotfiles
 echo "### Creating symlink using Stow"
@@ -79,11 +79,11 @@ fi
 if [[ $my_os == Darwin ]]; then
     # Create structure for .config files for asdf
     echo "### Creating working .config structure for asdf"
-    mkdir -p "$HOME/.config/asdf"
+    mkdir -p "$HOME"/.config/asdf
 
     # Stow .dotfile asdf only
     echo "### Creating symlink using Stow"
-    cd "$HOME/.dotfiles" || { echo "Failed to change directory"; exit 1; }
+    cd "$HOME"/.dotfiles || { echo "Failed to change directory"; exit 1; }
     if [ -x "$(command -v stow)" ]; then
         stow -vSt "$HOME" asdf || { echo "Failed to stow dotfiles"; exit 1; }
     else
