@@ -38,26 +38,26 @@ cd .dotfile/scripts/
 exec zsh -l
 ```
 
-5. Clean old zsh related files:
+4. Clean old zsh related files:
 
 ```zsh
 rm -rf ~/.zsh_sessions && rm ~/.zsh_history
 ```
 
-6. Rebuild zcompdump for [autocompletion](https://docs.brew.sh/Shell-Completion)
+5. Rebuild zcompdump for [autocompletion](https://docs.brew.sh/Shell-Completion)
 
 ```zsh
 rm -f ~/.zcompdump; compinit
 ```
 
-7. Setup your SSH and PGP Keys following [YubiKey-Guide](https://github.com/drduh/YubiKey-Guide)
+6. Setup your SSH and PGP Keys following [YubiKey-Guide](https://github.com/drduh/YubiKey-Guide)
 
-8. Setup [asdf](https://asdf-vm.com/guide/getting-started.htm)
+7. Setup [asdf](https://asdf-vm.com/guide/getting-started.htm)
 
-9. You can consider updating your git remote repository url to use ssh instead
+8. You can consider updating your git remote repository url to use ssh instead
 
 ```zsh
-git remote --set-url origin git@gitlab.com:i-am-pierre/dotfiles_uat.git
+git remote set-url origin_uat git@gitlab.com:i-am-pierre/dotfiles_uat.git
 ```
 
 FYI Install softwares listed in Brewfile:
@@ -110,7 +110,7 @@ cd .dotfile/scripts/
 4. You can consider updating your git remote repository url to use ssh instead
 
 ```zsh
-git remote --set-url origin git@gitlab.com:i-am-pierre/dotfiles_uat.git
+git remote set-url origin_uat git@gitlab.com:i-am-pierre/dotfiles_uat.git
 ```
 
 To be continued...
@@ -161,7 +161,7 @@ bash ./install.sh
 4. You can consider updating your git remote repository url to use ssh instead
 
 ```zsh
-git remote --set-url origin git@gitlab.com:i-am-pierre/dotfiles_uat.git
+git remote set-url origin_uat git@gitlab.com:i-am-pierre/dotfiles_uat.git
 ```
 
 To be continued...
