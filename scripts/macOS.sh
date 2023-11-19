@@ -86,7 +86,7 @@ defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
 echo "Terminal..."
 # Copy my prefences plist into ~/Library/Prefrences
 if [ -f "com.apple.Terminal.plist" ] ; then
-  cp com.apple.Terminal.plist $HOME/Library/Preferences || { echo "Failed to copy Termincal.plist"; exit 1; }
+  cp com.apple.Terminal.plist "$HOME"/Library/Preferences || { echo "Failed to copy Terminal.plist"; exit 1; }
 fi
 
 for app in "Activity Monitor" \
