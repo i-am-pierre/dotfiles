@@ -22,13 +22,9 @@ UAT reporsitory:
 git clone https://gitlab.com/i-am-pierre/dotfiles_uat.git ~/.dotfiles
 ```
 
-2. Run the install.sh script located in the .dotfile/scripts/ folder:
+2. Run the install.sh script located in the .dotfile folder:
 
 ```zsh
-# move into your .dotfiles/ directory:
-cd .dotfile/scripts/
-
-# Use the install script
 ./install.sh
 ```
 
@@ -75,7 +71,7 @@ brew bundle dump --file ~/.dotfiles/Brewfile --describe
 
 To be continued...
 
-## GNU/Linux (Debian and Ubuntu, using apt package manager)
+## GNU/Linux (Debian or Ubuntu, using apt package manager)
 
 0. Install git if git isn't installed and make sure user has sudo priviladges.
 
@@ -95,13 +91,9 @@ UAT reporsitory:
 git clone https://gitlab.com/i-am-pierre/dotfiles_uat.git ~/.dotfiles
 ```
 
-2. Run the install.sh script located in the .dotfile/scripts/ folder:
+2. Run the install.sh script located in the .dotfile folder:
 
 ```zsh
-# move into your .dotfiles/ directory:
-cd .dotfile/scripts/
-
-# Use the install script
 ./install.sh
 ```
 
@@ -146,13 +138,9 @@ UAT reporsitory:
 git clone https://gitlab.com/i-am-pierre/dotfiles_uat.git ~/.dotfiles
 ```
 
-2. Run the install.sh script located in the .dotfile/scripts/ folder:
+2. Run the install.sh script located in the .dotfile folder:
 
 ```zsh
-# move into your .dotfiles/ directory:
-cd .dotfile/scripts/
-
-# Use the install script
 bash ./install.sh
 ```
 

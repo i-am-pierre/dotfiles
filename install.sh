@@ -12,6 +12,9 @@ pkg_list=(
     zsh 
 )
 
+# Get Current directory instead of hardcoded path
+MY_DOT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 # Function to install packages
 install_packages() {
     local package_manager="$1"
@@ -50,11 +53,11 @@ case $my_os in
 
         # Then pass in the Brewfile location...
         echo "### Installing content of the Brewfile"
-        brew bundle --file "$HOME"/.dotfiles/Brewfile
+        brew bundle --file "$MY_DOT_DIR"/Brewfile
     
         # Source macOS.sh to make it more usable
         echo "### Sourcing macOS.sh script"
-        source "$HOME"/.dotfiles/scripts/macOS.sh || { echo "Failed to source macOS.sh"; exit 1; }
+        source "$MY_DOT_DIR"/scripts/macOS.sh || { echo "Failed to source macOS.sh"; exit 1; }
         ;;
     *)
         echo "### You are using an unsupported OS, $my_os"
@@ -68,7 +71,6 @@ mkdir -p "$HOME"/.config/{zsh,git,vim}
 
 # Stow .dotfiles
 echo "### Creating symlink using Stow"
-cd "$HOME/.dotfiles" || { echo "Failed to change directory"; exit 1; }
 if [ -x "$(command -v stow)" ]; then
     stow -vSt "$HOME" git tmux vim zsh || { echo "Failed to stow dotfiles"; exit 1; }
 else
@@ -83,7 +85,6 @@ if [[ $my_os == Darwin ]]; then
 
     # Stow .dotfile asdf only
     echo "### Creating symlink using Stow"
-    cd "$HOME"/.dotfiles || { echo "Failed to change directory"; exit 1; }
     if [ -x "$(command -v stow)" ]; then
         stow -vSt "$HOME" asdf || { echo "Failed to stow dotfiles"; exit 1; }
     else
