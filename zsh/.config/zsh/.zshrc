@@ -34,8 +34,16 @@ if [ $(command -v brew) ] ; then
   compinit
 fi
 
-# Configure completions for asdf
+# Configure completions for asdf and set Path for asdfrc and defaults
 if [ $(command -v asdf) ] ; then
+  # https://asdf-vm.com/manage/configuration.html#asdfrc
+    export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/.asdfrc"
+
+    # https://github.com/asdf-vm/asdf-nodejs#default-npm-packages
+    export ASDF_NPM_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/default-npm-packages"
+
+    # https://github.com/asdf-community/asdf-python#default-python-packages
+    export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/default-python-packages"
   . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
