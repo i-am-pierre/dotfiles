@@ -27,11 +27,11 @@ setopt PROMPT_SUBST
 NEWLINE=$'\n'
 PROMPT='[%F{green}%n@%m%f] %F{cyan}%~%f ${vcs_info_msg_0_}$NEWLINE> '
 
-# Configure completions for Homebrew
-if [ $(command -v brew) ] ; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-  autoload -Uz compinit
-  compinit
+# Check for existence of Homebrew before configuring completions
+if command -v brew >/dev/null 2>&1; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    autoload -Uz compinit
+    compinit
 fi
 
 # Configure completions for asdf and set Path for asdfrc and defaults
@@ -50,12 +50,12 @@ fi
 # Allows your gpg passphrase prompt to spawn (useful for signing commits).
 export GPG_TTY="$(tty)"
 
-# Bat Theme
-if [ $(command -v bat) ] ; then
-  export BAT_THEME="Visual Studio Dark+"
+# Check for existence of bat before setting theme
+if command -v bat >/dev/null 2>&1; then
+    export BAT_THEME="Visual Studio Dark+"
 fi
 
-# Load Aliases
-if [ -f "$ZDOTDIR/.aliases" ] ; then
-  source "$ZDOTDIR/.aliases"
+# Load Aliases if the file exists
+if [ -f "$ZDOTDIR/.aliases" ]; then
+    source "$ZDOTDIR/.aliases"
 fi
