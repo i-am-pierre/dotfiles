@@ -3,5 +3,10 @@
 \.git
 \.gitignore
 
-README.md
+\scripts
+
+.stow-local-ignore
 Brewfile
+install.sh
+LICENSE.md
+README.md
