@@ -1,20 +1,19 @@
-# History
+# History Settings
 export HISTFILE=$ZDOTDIR/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
 export HISTFILESIZE=20000
 
-# ZSH Options for History
 setopt HISTIGNORESPACE # Prevents the current line from being saved if it begins with a space
 setopt SHAREHISTORY # Share history across multiple zsh sessions
-setopt APPEND_HISTORY #Append to history
+setopt APPEND_HISTORY # Append to history
 setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicates first
 
 # ZSH Options
 setopt AUTOCD # When you enter the path but forget the leading cd command
 setopt RM_STAR_WAIT # Avoid removing everything when rm * is entered
 
-# ZSH Completion
+# Complete Settings
 autoload -Uz compinit && compinit
 
 # Prompt
