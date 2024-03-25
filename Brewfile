@@ -1,6 +1,4 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Library for command-line editing
@@ -47,14 +45,22 @@ brew "ykman"
 brew "ykpers"
 # General-purpose lossless data-compression library
 brew "zlib"
+# Free video downloader
+cask "4k-video-downloader"
 # Application uninstaller
 cask "appcleaner"
+# Cross-platform AI benchmark to evaluate AI workload performance
+cask "geekbench-ml"
 # System monitoring app
 cask "istat-menus"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-live"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Clipboard manager
 cask "maccy"
+# Power management and monitoring for Apple Mx processors
+cask "mx-power-gadget"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # Graphical client for Git version control
@@ -71,8 +77,15 @@ cask "vlc"
 cask "yubico-authenticator"
 # Application for configuring any YubiKey
 cask "yubico-yubikey-manager"
-vscode "DavidAnson.vscode-markdownlint"
+vscode "continue.continue"
+vscode "davidanson.vscode-markdownlint"
 vscode "mhutchie.git-graph"
+vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "ms-toolsai.jupyter"
+vscode "ms-toolsai.jupyter-keymap"
+vscode "ms-toolsai.jupyter-renderers"
+vscode "ms-toolsai.vscode-jupyter-cell-tags"
+vscode "ms-toolsai.vscode-jupyter-slideshow"
 vscode "timonwong.shellcheck"
