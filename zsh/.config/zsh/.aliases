@@ -43,3 +43,4 @@ alias rm='rm -i'
 alias cdrepo='cd ~/Documents/Code/Repos'
 alias zs='vim $ZDOTDIR/.zshrc'
 alias zr='source $ZDOTDIR/.zshrc'
+alias ytdl="yt-dlp -f 'bv*+ba'"
