@@ -22,7 +22,7 @@ UAT reporsitory:
 git clone https://gitlab.com/i-am-pierre/dotfiles_uat.git ~/.dotfiles
 ```
 
-2. Run the install.sh script located in the .dotfile folder:
+2. Run the install.sh script located in the .dotfiles folder:
 
 ```zsh
 ./install.sh
