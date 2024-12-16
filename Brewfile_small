@@ -1,16 +1,34 @@
 tap "homebrew/bundle"
+# GNU multiple precision arithmetic library
+brew "gmp"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Library for command-line editing
+brew "readline"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
 # GNU Transport Layer Security (TLS) Library
 brew "gnutls"
+# GNU awk utility
+brew "gawk"
+# GNU database manager
+brew "gdbm"
+# New GNU portable threads library
+brew "npth"
 # Passphrase entry dialog utilizing the Assuan protocol
 brew "pinentry"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Text-based UI library
+brew "ncurses"
 # Improved top (interactive process viewer)
 brew "htop"
 # Pinentry for GPG on Mac
@@ -19,6 +37,8 @@ brew "pinentry-mac"
 brew "pwgen"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Tool Command Language
+brew "tcl-tk"
 # Terminal multiplexer
 brew "tmux"
 # Vi 'workalike' with many additional features
@@ -41,6 +61,8 @@ cask "mx-power-gadget"
 cask "obsidian"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# VPN client for secure internet access and private browsing
+cask "tunnelbear"
 # Virtual machines UI using QEMU
 cask "utm"
 # Open-source code editor
