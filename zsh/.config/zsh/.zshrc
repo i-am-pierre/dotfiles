@@ -43,7 +43,6 @@ if [ $(command -v asdf) ] ; then
 
     # https://github.com/asdf-community/asdf-python#default-python-packages
     export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/default-python-packages"
-  . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
 # Allows your gpg passphrase prompt to spawn (useful for signing commits).
