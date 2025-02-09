@@ -34,15 +34,20 @@ if command -v brew >/dev/null 2>&1; then
 fi
 
 # Configure completions for asdf and set Path for asdfrc and defaults
-if [ $(command -v asdf) ] ; then
-  # https://asdf-vm.com/manage/configuration.html#asdfrc
-    export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/.asdfrc"
+if command -v asdf >/dev/null 2>&1; then
+    # Set asdf config file path (for custom configs)
+    export ASDF_CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/asdf/.asdfrc"
 
-    # https://github.com/asdf-vm/asdf-nodejs#default-npm-packages
-    export ASDF_NPM_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/default-npm-packages"
+    # Default package files for asdf plugins (Node.js, Python, etc.)
+    export ASDF_NPM_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/asdf/default-npm-packages"
+    export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/asdf/default-python-packages"
 
-    # https://github.com/asdf-community/asdf-python#default-python-packages
-    export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/default-python-packages"
+    # Add asdf shims to PATH
+    export PATH="$HOME/.asdf/shims:$PATH"
+
+    # Enable asdf completions
+    fpath=("$HOME/.asdf/completions" $fpath)
+    autoload -Uz compinit && compinit
 fi
 
 # Allows your gpg passphrase prompt to spawn (useful for signing commits).
