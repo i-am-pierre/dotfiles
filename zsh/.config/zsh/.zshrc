@@ -27,14 +27,14 @@ NEWLINE=$'\n'
 PROMPT='[%F{green}%n@%m%f] %F{cyan}%~%f ${vcs_info_msg_0_}$NEWLINE> '
 
 # ------------------------------------------------------------------------------
-# asdf (installed via Homebrew, completions generated manually)
+# asdf: setup with XDG and completions
 # ------------------------------------------------------------------------------
-export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
-# Optional default packages for plugins
-export ASDF_NPM_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/default-npm-packages"
-export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/default-python-packages"
+# Set ASDF data dir (assumes it's already exported via .zshenv or here)
+export ASDF_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/asdf"
+
+# Add asdf shims to PATH
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 # Add manually generated asdf completions to fpath
 fpath=("$ASDF_DATA_DIR/completions" $fpath)
@@ -46,6 +46,7 @@ autoload -Uz compinit
 compinit
 
 # Link asdf completions
+autoload -Uz _asdf
 if type _asdf &>/dev/null; then
   compdef _asdf asdf
 fi
