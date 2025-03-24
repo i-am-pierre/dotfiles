@@ -15,6 +15,26 @@ pkg_list=(
 # Get Current directory (the dotfiles repo root)
 MY_DOT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+# Optional: allow selecting a Brewfile variant or skipping it
+BREWFILE_OPTION="$1"
+
+case "$BREWFILE_OPTION" in
+    --brewfile-small)
+        BREWFILE_PATH="$MY_DOT_DIR/Brewfile_small"
+        ;;
+    --no-brewfile)
+        BREWFILE_PATH=""
+        ;;
+    ""|--brewfile)
+        BREWFILE_PATH="$MY_DOT_DIR/Brewfile" # default
+        ;;
+    *)
+        echo "Invalid option: $BREWFILE_OPTION"
+        echo "Usage: $0 [--brewfile | --brewfile-small | --no-brewfile]"
+        exit 1
+        ;;
+esac
+
 # Function to install packages
 install_packages() {
     local package_manager="$1"
@@ -45,7 +65,6 @@ case $my_os in
     'Darwin')
         echo "### You are using macOS"
 
-        # Install Homebrew if needed
         if ! command -v brew >/dev/null 2>&1; then
             echo "### Installing Homebrew"
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || {
@@ -57,17 +76,20 @@ case $my_os in
         echo "### Adding brew to PATH temporarily"
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
-        echo "### Installing content of the Brewfile"
-        brew bundle --file "$MY_DOT_DIR"/Brewfile
+        if [ -n "$BREWFILE_PATH" ]; then
+            echo "### Installing content of Brewfile: $BREWFILE_PATH"
+            brew bundle --file "$BREWFILE_PATH"
+        else
+            echo "### Skipping brew bundle (per user choice)"
+        fi
 
         echo "### Sourcing macOS.sh script"
-        source "$MY_DOT_DIR"/scripts/macOS.sh || {
+        source "$MY_DOT_DIR/scripts/macOS.sh" || {
             echo "Failed to source macOS.sh"
             exit 1
         }
 
-        # macOS-specific: setup asdf completions
-        echo "### Creating working .local/share/asdf/completions directory"
+        echo "### Creating .local/share/asdf/completions"
         mkdir -p "$HOME/.local/share/asdf/completions"
 
         echo "### Generating asdf zsh completions"
@@ -91,11 +113,9 @@ case $my_os in
         ;;
 esac
 
-# Create structure for .config
-echo "### Creating working .config structure"
-mkdir -p "$HOME"/.config/{zsh,git,vim}
+echo "### Creating .config structure"
+mkdir -p "$HOME/.config/"{zsh,git,vim}
 
-# Stow .dotfiles
 echo "### Creating symlinks using Stow"
 if command -v stow >/dev/null 2>&1; then
     stow -vSt "$HOME" git tmux vim zsh || {
@@ -106,7 +126,6 @@ else
     echo "Stow not found. Please install it."
 fi
 
-# Update shell to zsh if it's not already the default
 if [ "$SHELL" != "$(command -v zsh)" ]; then
     echo "### Changing default shell to Zsh"
     chsh -s "$(command -v zsh)" "$USER" || {
@@ -117,5 +136,5 @@ else
     echo "### Zsh is already the default shell"
 fi
 
-echo "### ✅ Installation completed!"
+echo "### Installation completed!"
 echo "### ➜ Run 'exec zsh -l' or restart your terminal to use Zsh now."

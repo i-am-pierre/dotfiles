@@ -33,36 +33,24 @@ brew "libvmaf"
 brew "aom"
 # Library for ARIB STD-B24, decoding JIS 8 bit characters and parsing MPEG-TS
 brew "aribb24"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
 # Macro processing language
 brew "m4"
 # Automatic configure script builder
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
-# Mozilla CA certificate store
-brew "ca-certificates"
-# GNU multiple precision arithmetic library
-brew "gmp"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
-# Generic library support script
-brew "libtool"
-# YAML Parser
-brew "libyaml"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
-# Library for command-line editing
-brew "readline"
-# ODBC 3 connectivity for UNIX
-brew "unixodbc"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Mozilla CA certificate store
+brew "ca-certificates"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # C library implementing the SSH2 protocol
 brew "libssh2"
 # C library of Git core methods that is re-entrant and linkable
-brew "libgit2@1.7"
+brew "libgit2"
 # Regular expressions library
 brew "oniguruma"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -79,12 +67,10 @@ brew "fontconfig"
 brew "libunistring"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
-# Library for decimal floating point arithmetic
-brew "mpdecimal"
 # Perl compatible regular expressions library with a new API
 brew "pcre2"
-# Command-line interface for SQLite
-brew "sqlite"
+# Easily download, build, install, upgrade, and uninstall Python packages
+brew "python-setuptools"
 # Core application library for C
 brew "glib"
 # X.Org: Protocol Headers
@@ -105,8 +91,6 @@ brew "libxrender"
 brew "lzo"
 # Low-level library for pixel manipulation
 brew "pixman"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # Mozilla CA bundle for Python
@@ -119,6 +103,10 @@ brew "cffi"
 brew "cjson"
 # Cross-platform make
 brew "cmake"
+# GNU multiple precision arithmetic library
+brew "gmp"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Cryptographic recipes and primitives for Python
 brew "cryptography"
 # HTTP/2 C Library
@@ -167,6 +155,14 @@ brew "libb2"
 brew "libarchive"
 # Implementation of the Unicode line- and word-breaking algorithms
 brew "libunibreak"
+# Library for decimal floating point arithmetic
+brew "mpdecimal"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # Blu-Ray disc playback library for media players like VLC
@@ -179,7 +175,7 @@ brew "mbedtls"
 brew "librist"
 # Library for sample rate conversion of audio data
 brew "libsamplerate"
-# Vorbis General Audio Compression Codec
+# Vorbis general audio compression codec
 brew "libvorbis"
 # MP3 player for Linux and UNIX
 brew "mpg123"
@@ -259,12 +255,12 @@ brew "npth"
 brew "pinentry"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Command-line tools for OpenPGP-related operations
-brew "hopenpgp-tools"
 # Text-based UI library
 brew "ncurses"
 # Improved top (interactive process viewer)
 brew "htop"
+# Generic library support script
+brew "libtool"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
@@ -278,9 +274,11 @@ brew "libcbor"
 # Provides library functionality for FIDO U2F & FIDO 2.0, including USB
 brew "libfido2"
 # C library of Git core methods that is re-entrant and linkable
-brew "libgit2"
+brew "libgit2@1.7"
 # Library for large linear classification
 brew "liblinear"
+# YAML Parser
+brew "libyaml"
 # C library for manipulating Yubico one-time passwords
 brew "libyubikey"
 # High-performance theorem prover
@@ -305,14 +303,8 @@ brew "pinentry-mac"
 brew "pkgconf"
 # Password generator
 brew "pwgen"
-# Easily download, build, install, upgrade, and uninstall Python packages
-brew "python-setuptools"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
-# Safe, concurrent, practical language
-brew "rust"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Tool Command Language
@@ -331,8 +323,6 @@ brew "wireguard-go"
 brew "wireguard-tools"
 # Tool for managing your YubiKey configuration
 brew "ykman"
-# YubiKey personalization library and tool
-brew "ykpers"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # General-purpose lossless data-compression library
@@ -344,7 +334,7 @@ cask "chatgpt"
 # Open-source video transcoder
 cask "handbrake"
 # System monitoring app
-cask "istat-menus@6"
+cask "istat-menus"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-live"
 # Automator software to start apps, run scripts or commands and more
@@ -383,6 +373,7 @@ cask "yubico-authenticator"
 cask "yubico-yubikey-manager"
 vscode "continue.continue"
 vscode "davidanson.vscode-markdownlint"
+vscode "goessner.mdmath"
 vscode "james-yu.latex-workshop"
 vscode "mhutchie.git-graph"
 vscode "ms-python.debugpy"

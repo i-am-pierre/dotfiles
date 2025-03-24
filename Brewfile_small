@@ -1,87 +1,37 @@
 tap "homebrew/bundle"
-# GNU multiple precision arithmetic library
-brew "gmp"
-# GNU File, Shell, and Text utilities
+
+# Essentials & GNU build tools
 brew "coreutils"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
-# Library for command-line editing
-brew "readline"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
-# GNU Transport Layer Security (TLS) Library
-brew "gnutls"
-# GNU awk utility
 brew "gawk"
-# GNU database manager
 brew "gdbm"
-# New GNU portable threads library
-brew "npth"
-# Passphrase entry dialog utilizing the Assuan protocol
-brew "pinentry"
-# GNU Pretty Good Privacy (PGP) package
-brew "gnupg"
-# Text-based UI library
+brew "gettext"
+brew "gnutls"
+brew "gmp"
 brew "ncurses"
-# Improved top (interactive process viewer)
-brew "htop"
-# Pinentry for GPG on Mac
-brew "pinentry-mac"
-# Password generator
-brew "pwgen"
-# Organize software neatly under a single directory tree (e.g. /usr/local)
-brew "stow"
-# Tool Command Language
+brew "npth"
+brew "openssl@3"
+brew "readline"
 brew "tcl-tk"
-# Terminal multiplexer
-brew "tmux"
-# Vi 'workalike' with many additional features
-brew "vim"
-# Userspace Go implementation of WireGuard
-brew "wireguard-go"
-# Tools for the WireGuard secure network tunnel
-brew "wireguard-tools"
-# Tool for managing your YubiKey configuration
+
+# asdf + Python build support
+brew "asdf"
+
+# GPG + YubiKey support
+brew "gnupg"
+brew "pinentry"
+brew "pinentry-mac"
 brew "ykman"
-# YubiKey personalization library and tool
 brew "ykpers"
-# System monitoring app
-cask "istat-menus@6"
-# Clipboard manager
+
+# Terminal tools
+brew "bat"
+brew "htop"
+brew "pwgen"
+brew "stow"
+brew "tmux"
+brew "vim"
+
+# GUI apps (minimal but essential)
 cask "maccy"
-# Power management and monitoring for Apple Mx processors
-cask "mx-power-gadget"
-# Knowledge base that works on top of a local folder of plain text Markdown files
-cask "obsidian"
-# Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
-# VPN client for secure internet access and private browsing
-cask "tunnelbear"
-# Virtual machines UI using QEMU
-cask "utm"
-# Open-source code editor
 cask "visual-studio-code"
-# Multimedia player
-cask "vlc"
-# Application for generating TOTP and HOTP codes
-cask "yubico-authenticator"
-# Application for configuring any YubiKey
-cask "yubico-yubikey-manager"
-vscode "davidanson.vscode-markdownlint"
-vscode "mhutchie.git-graph"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-toolsai.jupyter"
-vscode "ms-toolsai.jupyter-keymap"
-vscode "ms-toolsai.jupyter-renderers"
-vscode "ms-toolsai.vscode-jupyter-cell-tags"
-vscode "ms-toolsai.vscode-jupyter-slideshow"
-vscode "streetsidesoftware.code-spell-checker"
-vscode "timonwong.shellcheck"
