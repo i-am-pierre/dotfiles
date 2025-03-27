@@ -1,22 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 # File: install.sh
 
 # Define package list
-pkg_list=( 
-    bat
-    git
-    pwgen 
-    stow
-    tmux
-    vim 
-    zsh 
-)
+PKG_LIST="bat git pwgen stow tmux vim zsh"
 
 # Get Current directory (the dotfiles repo root)
-MY_DOT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+MY_DOT_DIR=$(cd "$(dirname "$0")" && pwd)
 
 # Optional: allow selecting a Brewfile variant or skipping it
-BREWFILE_OPTION="$1"
+BREWFILE_OPTION=$1
 
 case "$BREWFILE_OPTION" in
     --brewfile-small)
@@ -26,7 +18,7 @@ case "$BREWFILE_OPTION" in
         BREWFILE_PATH=""
         ;;
     ""|--brewfile)
-        BREWFILE_PATH="$MY_DOT_DIR/Brewfile" # default
+        BREWFILE_PATH="$MY_DOT_DIR/Brewfile"
         ;;
     *)
         echo "Invalid option: $BREWFILE_OPTION"
@@ -37,32 +29,36 @@ esac
 
 # Function to install packages
 install_packages() {
-    local package_manager="$1"
+    PACKAGE_MANAGER=$1
     shift
-    echo "### You are using $package_manager"
+    echo "### You are using $PACKAGE_MANAGER"
 
-    if command -v "$package_manager" >/dev/null 2>&1; then
-        sudo "$package_manager" update && sudo "$package_manager" install -y "${pkg_list[@]}" || {
-            echo "Failed to install packages"
+    if command -v "$PACKAGE_MANAGER" >/dev/null 2>&1; then
+        if [ "$PACKAGE_MANAGER" = "apt" ]; then
+            sudo "$PACKAGE_MANAGER" update && sudo "$PACKAGE_MANAGER" install -y $PKG_LIST
+        elif [ "$PACKAGE_MANAGER" = "pkg" ]; then
+            sudo "$PACKAGE_MANAGER" update -f && sudo "$PACKAGE_MANAGER" install -y $PKG_LIST
+        else
+            echo "### Unsupported package manager: $PACKAGE_MANAGER"
             exit 1
-        }
+        fi
     else
-        echo "### $package_manager not found. Please install it."
+        echo "### $PACKAGE_MANAGER not found. Please install it."
         exit 1
     fi
 }
 
 # Detect platform
-my_os=$(uname -s)
+MY_OS=$(uname -s)
 
-case $my_os in
-    'Linux')
+case "$MY_OS" in
+    Linux)
         install_packages apt
         ;;
-    'FreeBSD')
+    FreeBSD)
         install_packages pkg
         ;;
-    'Darwin')
+    Darwin)
         echo "### You are using macOS"
 
         if ! command -v brew >/dev/null 2>&1; then
@@ -74,7 +70,7 @@ case $my_os in
         fi
 
         echo "### Adding brew to PATH temporarily"
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)"
 
         if [ -n "$BREWFILE_PATH" ]; then
             echo "### Installing content of Brewfile: $BREWFILE_PATH"
@@ -83,11 +79,13 @@ case $my_os in
             echo "### Skipping brew bundle (per user choice)"
         fi
 
-        echo "### Sourcing macOS.sh script"
-        source "$MY_DOT_DIR/scripts/macOS.sh" || {
-            echo "Failed to source macOS.sh"
-            exit 1
-        }
+        echo "### Running macOS-specific script"
+        if [ -f "$MY_DOT_DIR/scripts/macOS.sh" ]; then
+            . "$MY_DOT_DIR/scripts/macOS.sh" || {
+                echo "Failed to source macOS.sh"
+                exit 1
+            }
+        fi
 
         echo "### Creating .local/share/asdf/completions"
         mkdir -p "$HOME/.local/share/asdf/completions"
@@ -108,13 +106,13 @@ case $my_os in
         fi
         ;;
     *)
-        echo "### You are using an unsupported OS: $my_os"
+        echo "### You are using an unsupported OS: $MY_OS"
         exit 1
         ;;
 esac
 
 echo "### Creating .config structure"
-mkdir -p "$HOME/.config/"{zsh,git,vim}
+mkdir -p "$HOME/.config/zsh" "$HOME/.config/git" "$HOME/.config/vim"
 
 echo "### Creating symlinks using Stow"
 if command -v stow >/dev/null 2>&1; then
@@ -126,9 +124,12 @@ else
     echo "Stow not found. Please install it."
 fi
 
-if [ "$SHELL" != "$(command -v zsh)" ]; then
+CURRENT_SHELL=$(basename "$SHELL")
+ZSH_PATH=$(command -v zsh)
+
+if [ "$CURRENT_SHELL" != "$(basename "$ZSH_PATH")" ]; then
     echo "### Changing default shell to Zsh"
-    chsh -s "$(command -v zsh)" "$USER" || {
+    chsh -s "$ZSH_PATH" "$USER" || {
         echo "Failed to update shell to zsh"
         exit 1
     }
