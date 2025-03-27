@@ -1,4 +1,3 @@
-tap "homebrew/bundle"
 # Generic-purpose lossless compression algorithm by Google
 brew "brotli"
 # Library and utilities for processing GIFs
@@ -267,14 +266,10 @@ brew "imagemagick"
 brew "iperf3"
 # JSON parser for C
 brew "json-c"
-# Assuan IPC Library
-brew "libassuan@2"
 # CBOR protocol implementation for C and others
 brew "libcbor"
 # Provides library functionality for FIDO U2F & FIDO 2.0, including USB
 brew "libfido2"
-# C library of Git core methods that is re-entrant and linkable
-brew "libgit2@1.7"
 # Library for large linear classification
 brew "liblinear"
 # YAML Parser
@@ -363,8 +358,6 @@ cask "utm"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
-# Create, manage, and run virtual machines
-cask "vmware-fusion"
 # Network monitoring and troubleshooting tool
 cask "wifiman"
 # Application for generating TOTP and HOTP codes
