@@ -56,7 +56,14 @@ https://asdf-vm.com/guide/getting-started.html
 ### 8. (Optional) Switch Git remote to SSH
 
 ```zsh
-git remote set-url origin git@github.com/i-am-pierre/dotfiles.git ~/.dotfiles
+git remote set-url origin git@github.com:i-am-pierre/dotfiles.git
+```
+
+### 9. (Optional) Set Touch ID as PAM in terminal
+
+```zsh
+cd ~/.dotfiles/script
+./enable_touchid_sudo.sh
 ```
 
 ## Homebrew Tips
@@ -104,7 +111,7 @@ This applies your shell and Stow changes.
 ### 3. (Optional) Switch Git remote to SSH
 
 ```zsh
-git remote set-url origin git@github.com/i-am-pierre/dotfiles.git ~/.dotfiles
+git remote set-url origin git@github.com:i-am-pierre/dotfiles.git
 ```
 
 ---
@@ -147,7 +154,7 @@ This applies shell and dotfile changes.
 ### 4. (Optional) Switch Git remote to SSH
 
 ```zsh
-git remote set-url origin git@github.com/i-am-pierre/dotfiles.git ~/.dotfiles
+git remote set-url origin git@github.com:i-am-pierre/dotfiles.git
 ```
 
 ---
