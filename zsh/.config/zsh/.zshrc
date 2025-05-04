@@ -35,14 +35,6 @@ export PATH="${ASDF_DATA_DIR}/shims:${PATH}"
 fpath=("${ASDF_DATA_DIR}/completions" $fpath)
 
 # ------------------------------------------------------------------------------
-#  Enable shell autocompletion for uv and uvx commands
-# ------------------------------------------------------------------------------
-if command -v uv &>/dev/null; then
-  eval "$(uv --generate-shell-completion zsh)"
-  eval "$(uvx --generate-shell-completion zsh)"
-fi
-
-# ------------------------------------------------------------------------------
 # Zsh Completion Initialization
 # ------------------------------------------------------------------------------
 autoload -Uz compinit
@@ -59,6 +51,14 @@ fi
 autoload -Uz _asdf
 if type _asdf &>/dev/null; then
   compdef _asdf asdf
+fi
+
+# ------------------------------------------------------------------------------
+#  Enable shell autocompletion for uv and uvx commands
+# ------------------------------------------------------------------------------
+if command -v uv &>/dev/null; then
+  eval "$(uv --generate-shell-completion zsh)"
+  eval "$(uvx --generate-shell-completion zsh)"
 fi
 
 # ------------------------------------------------------------------------------
