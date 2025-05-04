@@ -28,12 +28,19 @@ PROMPT='[%F{green}%n@%m%f] %F{cyan}%~%f ${vcs_info_msg_0_}$NEWLINE> '
 # ------------------------------------------------------------------------------
 # asdf: setup with XDG and completions
 # ------------------------------------------------------------------------------
-
 export ASDF_DATA_DIR="${XDG_DATA_HOME}/asdf"
 export PATH="${ASDF_DATA_DIR}/shims:${PATH}"
 
 # Add manually generated asdf completions to fpath
 fpath=("${ASDF_DATA_DIR}/completions" $fpath)
+
+# ------------------------------------------------------------------------------
+#  Enable shell autocompletion for uv and uvx commands
+# ------------------------------------------------------------------------------
+if command -v uv &>/dev/null; then
+  eval "$(uv --generate-shell-completion zsh)"
+  eval "$(uvx --generate-shell-completion zsh)"
+fi
 
 # ------------------------------------------------------------------------------
 # Zsh Completion Initialization
