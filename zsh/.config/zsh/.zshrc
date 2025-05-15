@@ -5,7 +5,6 @@ export HISTFILE="$ZDOTDIR/.zsh_history"
 export HISTSIZE=10000
 export SAVEHIST=10000
 export HISTFILESIZE=20000
-
 setopt HISTIGNORESPACE SHAREHISTORY APPEND_HISTORY HIST_EXPIRE_DUPS_FIRST
 
 # ------------------------------------------------------------------------------
@@ -29,26 +28,37 @@ PROMPT='[%F{green}%n@%m%f] %F{cyan}%~%f ${vcs_info_msg_0_}$NEWLINE> '
 # ------------------------------------------------------------------------------
 # asdf: setup with XDG and completions
 # ------------------------------------------------------------------------------
-
-# Set ASDF data dir (assumes it's already exported via .zshenv or here)
-export ASDF_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/asdf"
-
-# Add asdf shims to PATH
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
+export ASDF_DATA_DIR="${XDG_DATA_HOME}/asdf"
+export PATH="${ASDF_DATA_DIR}/shims:${PATH}"
 
 # Add manually generated asdf completions to fpath
-fpath=("$ASDF_DATA_DIR/completions" $fpath)
+fpath=("${ASDF_DATA_DIR}/completions" $fpath)
 
 # ------------------------------------------------------------------------------
 # Zsh Completion Initialization
 # ------------------------------------------------------------------------------
 autoload -Uz compinit
-compinit
 
-# Link asdf completions
+# Rebuild completion dump if needed
+if [[ ! -f "${XDG_CACHE_HOME}/zsh/zcompdump" ]]; then
+  mkdir -p "${XDG_CACHE_HOME}/zsh"
+  compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump"
+else
+  compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump"
+fi
+
+# asdf completion binding
 autoload -Uz _asdf
 if type _asdf &>/dev/null; then
   compdef _asdf asdf
+fi
+
+# ------------------------------------------------------------------------------
+#  Enable shell autocompletion for uv and uvx commands
+# ------------------------------------------------------------------------------
+if command -v uv &>/dev/null; then
+  eval "$(uv --generate-shell-completion zsh)"
+  eval "$(uvx --generate-shell-completion zsh)"
 fi
 
 # ------------------------------------------------------------------------------
