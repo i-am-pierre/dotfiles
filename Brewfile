@@ -32,14 +32,20 @@ brew "libvmaf"
 brew "aom"
 # Library for ARIB STD-B24, decoding JIS 8 bit characters and parsing MPEG-TS
 brew "aribb24"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Macro processing language
 brew "m4"
 # Automatic configure script builder
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# C string library for manipulating Unicode strings
+brew "libunistring"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
+# Text-based UI library
+brew "ncurses"
+# Library for command-line editing
+brew "readline"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -62,14 +68,8 @@ brew "bison"
 brew "freetype"
 # XML-based font configuration API for X Windows
 brew "fontconfig"
-# C string library for manipulating Unicode strings
-brew "libunistring"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
 # Perl compatible regular expressions library with a new API
 brew "pcre2"
-# Easily download, build, install, upgrade, and uninstall Python packages
-brew "python-setuptools"
 # Core application library for C
 brew "glib"
 # X.Org: Protocol Headers
@@ -154,14 +154,6 @@ brew "libb2"
 brew "libarchive"
 # Implementation of the Unicode line- and word-breaking algorithms
 brew "libunibreak"
-# Library for decimal floating point arithmetic
-brew "mpdecimal"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # Blu-Ray disc playback library for media players like VLC
@@ -254,10 +246,12 @@ brew "npth"
 brew "pinentry"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Text-based UI library
-brew "ncurses"
 # Improved top (interactive process viewer)
 brew "htop"
+# Library for decimal floating point arithmetic
+brew "mpdecimal"
+# Command-line interface for SQLite
+brew "sqlite"
 # Generic library support script
 brew "libtool"
 # Tools and libraries to manipulate images in many formats
@@ -288,8 +282,6 @@ brew "ninja"
 brew "meson"
 # Port scanning utility for large networks
 brew "nmap"
-# Swiss-army knife of markup format conversion
-brew "pandoc"
 # Highly capable, feature-rich programming language
 brew "perl"
 # Pinentry for GPG on Mac
@@ -298,6 +290,10 @@ brew "pinentry-mac"
 brew "pkgconf"
 # Password generator
 brew "pwgen"
+# Easily download, build, install, upgrade, and uninstall Python packages
+brew "python-setuptools"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -308,6 +304,8 @@ brew "tcl-tk"
 brew "utf8proc"
 # Terminal multiplexer
 brew "tmux"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Vi 'workalike' with many additional features
 brew "vim"
 # Internet file retriever
@@ -326,20 +324,16 @@ brew "zlib"
 cask "appcleaner"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Game client
+cask "gog-galaxy"
 # Open-source video transcoder
-cask "handbrake"
+cask "handbrake-app"
 # System monitoring app
 cask "istat-menus"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-live"
 # Automator software to start apps, run scripts or commands and more
 cask "lingon-x"
-# Discover, download, and run local LLMs
-cask "lm-studio"
-# Clipboard manager
-cask "maccy"
-# Full TeX Live distribution with GUI applications
-cask "mactex"
 # Run LLMs locally
 cask "msty"
 # Power management and monitoring for Apple Mx processors
@@ -364,19 +358,18 @@ cask "wifiman"
 cask "yubico-authenticator"
 # Application for configuring any YubiKey
 cask "yubico-yubikey-manager"
+vscode "charliermarsh.ruff"
 vscode "continue.continue"
 vscode "davidanson.vscode-markdownlint"
-vscode "goessner.mdmath"
-vscode "james-yu.latex-workshop"
 vscode "mhutchie.git-graph"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
 vscode "ms-toolsai.jupyter"
 vscode "ms-toolsai.jupyter-keymap"
 vscode "ms-toolsai.jupyter-renderers"
 vscode "ms-toolsai.vscode-jupyter-cell-tags"
 vscode "ms-toolsai.vscode-jupyter-slideshow"
 vscode "pkl.pkl-vscode"
-vscode "streetsidesoftware.code-spell-checker"
 vscode "timonwong.shellcheck"

@@ -86,24 +86,6 @@ case "$MY_OS" in
                 exit 1
             }
         fi
-
-        echo "### Creating .local/share/asdf/completions"
-        mkdir -p "$HOME/.local/share/asdf/completions"
-
-        echo "### Generating asdf zsh completions"
-        if command -v asdf >/dev/null 2>&1; then
-            asdf completion zsh > "$HOME/.local/share/asdf/completions/_asdf"
-        fi
-
-        echo "### Creating symlink using Stow for asdf dotfiles"
-        if command -v stow >/dev/null 2>&1; then
-            stow -vSt "$HOME" asdf || {
-                echo "Failed to stow asdf dotfiles"
-                exit 1
-            }
-        else
-            echo "Stow not found. Please install it."
-        fi
         ;;
     *)
         echo "### You are using an unsupported OS: $MY_OS"
@@ -138,4 +120,4 @@ else
 fi
 
 echo "### Installation completed!"
-echo "### ➜ Run 'exec zsh -l' or restart your terminal to use Zsh now."
+echo "### ➜ Run 'exec zsh -l' or restart your terminal to use zsh now."
