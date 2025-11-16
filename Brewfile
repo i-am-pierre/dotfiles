@@ -116,6 +116,8 @@ brew "rtmpdump"
 brew "curl"
 # AV1 decoder targeted to be small and fast
 brew "dav1d"
+# Command-line interface for SQLite
+brew "sqlite"
 # Ogg Bitstream Library
 brew "libogg"
 # Free lossless audio codec
@@ -250,8 +252,6 @@ brew "gnupg"
 brew "htop"
 # Library for decimal floating point arithmetic
 brew "mpdecimal"
-# Command-line interface for SQLite
-brew "sqlite"
 # Generic library support script
 brew "libtool"
 # Tools and libraries to manipulate images in many formats
@@ -331,7 +331,9 @@ cask "handbrake-app"
 # System monitoring app
 cask "istat-menus"
 # Wallet desktop application to maintain multiple cryptocurrencies
-cask "ledger-live"
+cask "ledger-wallet"
+# Wallet desktop application to maintain multiple cryptocurrencies
+cask "ledger-wallet"
 # Automator software to start apps, run scripts or commands and more
 cask "lingon-x"
 # Run LLMs locally
@@ -358,18 +360,5 @@ cask "wifiman"
 cask "yubico-authenticator"
 # Application for configuring any YubiKey
 cask "yubico-yubikey-manager"
-vscode "charliermarsh.ruff"
-vscode "continue.continue"
-vscode "davidanson.vscode-markdownlint"
-vscode "mhutchie.git-graph"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-python.vscode-python-envs"
-vscode "ms-toolsai.jupyter"
-vscode "ms-toolsai.jupyter-keymap"
-vscode "ms-toolsai.jupyter-renderers"
-vscode "ms-toolsai.vscode-jupyter-cell-tags"
-vscode "ms-toolsai.vscode-jupyter-slideshow"
-vscode "pkl.pkl-vscode"
-vscode "timonwong.shellcheck"
+# Multiplayer code editor
+cask "zed"
