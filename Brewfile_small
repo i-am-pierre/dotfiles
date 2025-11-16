@@ -31,4 +31,4 @@ brew "vim"
 
 # GUI apps (minimal but essential)
 cask "rectangle"
-cask "visual-studio-code"
+cask "zed"

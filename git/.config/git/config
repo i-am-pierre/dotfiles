@@ -8,16 +8,16 @@
 #   gpgSign = true
 [core]
 	excludesfile = $XDG_CONFIG_HOME/git/.gitignore_global
-	editor = code --wait --new-window
+	editor = zed --wait --new-window
 [init]
 	defaultBranch = main
 [diff]
-	tool = vscode
-[difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+	tool = zed
+[difftool "zed"]
+	cmd = zed --wait --diff $LOCAL $REMOTE
 [merge]
-	tool = vscode
-[mergetool "vscode"]
-	cmd = code --wait $MERGED
+	tool = zed
+[mergetool "zed"]
+	cmd = zed --wait $MERGED
 [pager]
 	log = False
