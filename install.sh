@@ -94,11 +94,11 @@ case "$MY_OS" in
 esac
 
 echo "### Creating .config structure"
-mkdir -p "$HOME/.config/zsh" "$HOME/.config/git" "$HOME/.config/vim"
+mkdir -p "$HOME/.config/zsh" "$HOME/.config/git" "$HOME/.config/vim" "$HOME/.config/zed"
 
 echo "### Creating symlinks using Stow"
 if command -v stow >/dev/null 2>&1; then
-    stow -vSt "$HOME" git tmux vim zsh || {
+    stow -vSt "$HOME" git tmux vim zsh zed || {
         echo "Failed to stow dotfiles"
         exit 1
     }
