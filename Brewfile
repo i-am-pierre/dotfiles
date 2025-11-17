@@ -350,8 +350,6 @@ cask "sourcetree"
 cask "tunnelbear"
 # Virtual machines UI using QEMU
 cask "utm"
-# Open-source code editor
-cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
 # Network monitoring and troubleshooting tool
