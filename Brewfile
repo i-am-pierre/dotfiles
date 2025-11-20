@@ -324,6 +324,7 @@ brew "zlib"
 cask "appcleaner"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+cask "font-jetbrains-mono"
 # Game client
 cask "gog-galaxy"
 # Open-source video transcoder

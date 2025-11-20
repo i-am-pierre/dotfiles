@@ -7,20 +7,29 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
-  },
-  "icon_theme": {
-    "mode": "dark",
-    "light": "Zed (Default)",
-    "dark": "Zed (Default)"
-  },
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
-  "theme": {
-    "mode": "dark",
-    "light": "JetBrains Dark",
-    "dark": "JetBrains Dark"
-  }
+	"telemetry": {
+		"diagnostics": false,
+		"metrics": false
+	},
+	"icon_theme": {
+		"mode": "dark",
+		"light": "JetBrains New UI Icons (Dark)",
+		"dark": "JetBrains New UI Icons (Dark)"
+	},
+	"ui_font_family": ".SystemUIFont",
+	"ui_font_size": 14,
+	"buffer_font_family": "JetBrains Mono",
+	"buffer_font_size": 14,
+	"buffer_line_height": { "custom": 1.4 },
+	"buffer_font_features": { "calt": false },
+	"buffer_font_weight": 300,
+	"theme": {
+		"mode": "dark",
+		"light": "JetBrains Dark",
+		"dark": "JetBrains Dark"
+	},
+	"project_panel": { "entry_spacing": "standard" },
+	"tabs": { "file_icons": true },
+	"tab_size": 4,
+	"hard_tabs": true
 }
