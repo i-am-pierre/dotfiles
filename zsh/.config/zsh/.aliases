@@ -41,6 +41,6 @@ alias rm='rm -i'
 
 # Others
 alias cdrepo='cd ~/Documents/Code/Repos'
-alias zs='vim $ZDOTDIR/.zshrc'
+alias zs='zed $ZDOTDIR/.zshrc'
 alias zr='source $ZDOTDIR/.zshrc'
 alias ytdl="yt-dlp -f 'bv*+ba'"

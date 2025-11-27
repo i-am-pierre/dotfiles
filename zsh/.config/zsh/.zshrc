@@ -64,3 +64,6 @@ fi
 if [ -f "$ZDOTDIR/.aliases" ]; then
   source "$ZDOTDIR/.aliases"
 fi
+
+# uv
+export PATH="$HOME/.local/share/uv/tools/mlx-lm/bin:$PATH"
