@@ -6,3 +6,9 @@ if [[ $(uname) == Darwin ]] ; then
         eval "$(/usr/local/bin/brew shellenv)"
     fi
 fi
+
+# uv
+export PATH="$HOME/.local/share/uv/tools/mlx-lm/bin:$PATH"
+
+# Cleanup duplicates for the PATH
+typeset -U path
