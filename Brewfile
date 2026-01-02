@@ -162,8 +162,6 @@ brew "libass"
 brew "libbluray"
 # Light HTTP/1.1 server library
 brew "libmicrohttpd"
-# Cryptographic & SSL/TLS library
-brew "mbedtls"
 # Reliable Internet Stream Transport (RIST)
 brew "librist"
 # Library for sample rate conversion of audio data
@@ -186,6 +184,8 @@ brew "libssh"
 brew "libvidstab"
 # VP8/VP9 video codec
 brew "libvpx"
+# Cryptographic & SSL/TLS library
+brew "mbedtls"
 # Audio codecs extracted from Android open source project
 brew "opencore-amr"
 # Framework for layout and rendering of i18n text
@@ -246,16 +246,10 @@ brew "libusb"
 brew "npth"
 # Passphrase entry dialog utilizing the Assuan protocol
 brew "pinentry"
-# GNU Pretty Good Privacy (PGP) package
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Improved top (interactive process viewer)
 brew "htop"
-# Library for decimal floating point arithmetic
-brew "mpdecimal"
-# Generic library support script
-brew "libtool"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "iperf3"
 # JSON parser for C
@@ -266,10 +260,14 @@ brew "libcbor"
 brew "libfido2"
 # Library for large linear classification
 brew "liblinear"
+# Generic library support script
+brew "libtool"
 # YAML Parser
 brew "libyaml"
 # C library for manipulating Yubico one-time passwords
 brew "libyubikey"
+# Library for decimal floating point arithmetic
+brew "mpdecimal"
 # High-performance theorem prover
 brew "z3"
 # Next-gen compiler infrastructure
@@ -282,6 +280,8 @@ brew "ninja"
 brew "meson"
 # Port scanning utility for large networks
 brew "nmap"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
 # Highly capable, feature-rich programming language
 brew "perl"
 # Pinentry for GPG on Mac
@@ -322,6 +322,8 @@ brew "yt-dlp"
 brew "zlib"
 # Application uninstaller
 cask "appcleaner"
+# E-books management software
+cask "calibre"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 cask "font-jetbrains-mono"
@@ -345,8 +347,6 @@ cask "mx-power-gadget"
 cask "obsidian"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
-# Graphical client for Git version control
-cask "sourcetree"
 # VPN client for secure internet access and private browsing
 cask "tunnelbear"
 # Virtual machines UI using QEMU
