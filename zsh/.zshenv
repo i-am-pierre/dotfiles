@@ -6,3 +6,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # ZSH base directories
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
+# Set EDITOR
+export EDITOR="nano"
