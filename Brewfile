@@ -62,8 +62,6 @@ brew "oniguruma"
 brew "bat"
 # High performance key/value database
 brew "berkeley-db@5"
-# Parser generator
-brew "bison"
 # Software library to render fonts
 brew "freetype"
 # XML-based font configuration API for X Windows
@@ -100,8 +98,6 @@ brew "pycparser"
 brew "cffi"
 # Ultralightweight JSON parser in ANSI C
 brew "cjson"
-# Cross-platform make
-brew "cmake"
 # GNU multiple precision arithmetic library
 brew "gmp"
 # GNU File, Shell, and Text utilities
@@ -226,12 +222,6 @@ brew "mpfr"
 brew "gawk"
 # GNU database manager
 brew "gdbm"
-# JBIG2 decoder and library (for monochrome documents)
-brew "jbig2dec"
-# International domain name library
-brew "libidn"
-# Interpreter for PostScript and PDF
-brew "ghostscript"
 # Common error values for all GnuPG components
 brew "libgpg-error"
 # Assuan IPC Library
@@ -252,12 +242,14 @@ brew "gnupg"
 brew "htop"
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "iperf3"
-# JSON parser for C
-brew "json-c"
+# JBIG2 decoder and library (for monochrome documents)
+brew "jbig2dec"
 # CBOR protocol implementation for C and others
 brew "libcbor"
 # Provides library functionality for FIDO U2F & FIDO 2.0, including USB
 brew "libfido2"
+# International domain name library
+brew "libidn"
 # Library for large linear classification
 brew "liblinear"
 # Generic library support script
@@ -276,14 +268,10 @@ brew "llvm"
 brew "lua"
 # Small build system for use with gyp or CMake
 brew "ninja"
-# Fast and user friendly build system
-brew "meson"
 # Port scanning utility for large networks
 brew "nmap"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
-# Highly capable, feature-rich programming language
-brew "perl"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Package compiler and linker metadata toolkit
@@ -292,14 +280,10 @@ brew "pkgconf"
 brew "pwgen"
 # Easily download, build, install, upgrade, and uninstall Python packages
 brew "python-setuptools"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
-# Tool Command Language
-brew "tcl-tk"
 # Clean C library for processing UTF-8 Unicode data
 brew "utf8proc"
 # Terminal multiplexer
@@ -308,8 +292,6 @@ brew "tmux"
 brew "uv"
 # Vi 'workalike' with many additional features
 brew "vim"
-# Internet file retriever
-brew "wget"
 # Userspace Go implementation of WireGuard
 brew "wireguard-go"
 # Tools for the WireGuard secure network tunnel
