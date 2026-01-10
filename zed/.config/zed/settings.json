@@ -1,42 +1,162 @@
-// Zed settings
+// ============================================================================
+// Zed Editor – User Settings
+// ============================================================================
 //
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
+// Official documentation:
+// https://zed.dev/docs/configuring-zed
 //
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
+// Tip:
+// To view *all* defaults (without overriding them), run:
+//   "zed: open default settings"
+// from the command palette (⌘⇧P)
+//
+// Notes:
+// - Zed settings are JSONC (JSON with comments)
+// - Only explicitly set values override defaults
+// - Platform-specific defaults already exist for macOS
+// ============================================================================
+
 {
+	// ------------------------------------------------------------------------
+	// Theme configuration
+	// ------------------------------------------------------------------------
+	// `mode` controls whether Zed follows system appearance or forces a mode.
+	// Possible values: "system" | "light" | "dark"
 	"theme": {
 		"mode": "dark",
+
+		// Theme used when mode == "light"
 		"light": "JetBrains Dark",
-		"dark": "JetBrains Dark"
+
+		// Theme used when mode == "dark"
+		"dark": "JetBrains Dark",
 	},
 
+	// ------------------------------------------------------------------------
+	// Icon theme configuration
+	// ------------------------------------------------------------------------
+	// Controls the file/tree icon set independently from the editor theme.
 	"icon_theme": {
 		"mode": "dark",
+
+		// Icon theme when in light mode
 		"light": "JetBrains New UI Icons (Dark)",
-		"dark": "JetBrains New UI Icons (Dark)"
+
+		// Icon theme when in dark mode
+		"dark": "JetBrains New UI Icons (Dark)",
 	},
+
+	// ------------------------------------------------------------------------
+	// UI (chrome) font settings
+	// ------------------------------------------------------------------------
+	// Applies to non-editor UI elements:
+	// tabs, panels, dialogs, command palette, etc.
+	//
+	// ".SystemUIFont" maps to San Francisco on macOS and tracks OS changes.
 	"ui_font_family": ".SystemUIFont",
 	"ui_font_size": 14,
+
+	// ------------------------------------------------------------------------
+	// Editor buffer (code) font settings
+	// ------------------------------------------------------------------------
+	// Applies to text buffers only (code, markdown, text files).
 	"buffer_font_family": "SF Mono",
 	"buffer_font_size": 14,
+
+	// Line height multiplier.
+	// A value around 1.3–1.5 is generally optimal for readability.
 	"buffer_line_height": { "custom": 1.4 },
-	"buffer_font_features": { "calt": false },
+
+	// OpenType font feature toggles.
+	// Disabling `calt` (contextual alternates) avoids ligature-like glyph
+	// substitutions even if the font supports them.
+	"buffer_font_features": {
+		"calt": false,
+	},
+
+	// Font weight for the editor buffer.
+	// 300 = Light; works well with SF Mono on macOS Retina displays.
 	"buffer_font_weight": 300,
 
-	// Project Panel Settings
-	"project_panel": { "entry_spacing": "standard" },
-	"tabs": { "file_icons": true },
+	// ------------------------------------------------------------------------
+	// Project panel (file tree) settings
+	// ------------------------------------------------------------------------
+	"project_panel": {
+		// Controls vertical spacing between entries.
+		// Common values: "compact" | "standard"
+		"entry_spacing": "standard",
+	},
+
+	// ------------------------------------------------------------------------
+	// Tab bar behavior
+	// ------------------------------------------------------------------------
+	"tabs": {
+		// Show file-type icons in tabs.
+		"file_icons": true,
+	},
+
+	// ------------------------------------------------------------------------
+	// Indentation behavior
+	// ------------------------------------------------------------------------
+	// Default indentation width for new files and editors.
 	"tab_size": 4,
+
+	// Use literal tab characters instead of spaces.
+	// This affects insertion, not rendering.
 	"hard_tabs": true,
 
-	// Terminal Panel Settings
+	// ------------------------------------------------------------------------
+	// Integrated terminal settings
+	// ------------------------------------------------------------------------
 	"terminal": {
-		// Terminal Font Settings
+		// Terminal font family.
+		// Independent from editor buffer font.
 		"font_family": "SF Mono",
+
+		// Terminal font size (points).
 		"font_size": 12,
-		"font_weight": 300
-	}
+
+		// Terminal font weight.
+		"font_weight": 300,
+	},
+
+	// ------------------------------------------------------------------------
+	// Language-specific overrides
+	// ------------------------------------------------------------------------
+	"languages": {
+		// Python: PEP 8 compliant, uv-friendly
+		"Python": {
+			"tab_size": 4,
+			"hard_tabs": false,
+		},
+
+		// Rust: standard rustfmt expectations
+		"Rust": {
+			"tab_size": 4,
+			"hard_tabs": false,
+		},
+
+		// YAML: critical for sops
+		"YAML": {
+			"tab_size": 2,
+			"hard_tabs": false,
+		},
+
+		// JSON / JSONC: predictable indentation
+		"JSON": {
+			"tab_size": 2,
+			"hard_tabs": false,
+		},
+
+		// TOML: used by uv, Cargo, tooling
+		"TOML": {
+			"tab_size": 2,
+			"hard_tabs": false,
+		},
+		// Shell scripts
+		"Shell Script": {
+			"tab_size": 2,
+			"hard_tabs": false,
+		},
+	},
 }
