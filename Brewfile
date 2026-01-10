@@ -1,4 +1,3 @@
-tap "dopplerhq/cli"
 # Simple, modern, secure file encryption
 brew "age"
 # Generic-purpose lossless compression algorithm by Google
