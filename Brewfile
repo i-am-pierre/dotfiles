@@ -1,3 +1,6 @@
+tap "dopplerhq/cli"
+# Simple, modern, secure file encryption
+brew "age"
 # Generic-purpose lossless compression algorithm by Google
 brew "brotli"
 # Library and utilities for processing GIFs
@@ -282,6 +285,8 @@ brew "pwgen"
 brew "python-setuptools"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
+# Editor of encrypted files
+brew "sops"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Clean C library for processing UTF-8 Unicode data
