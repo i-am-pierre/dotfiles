@@ -7,7 +7,6 @@
 [tag]
 #   gpgSign = true
 [core]
-	excludesfile = $XDG_CONFIG_HOME/git/.gitignore_global
 	editor = zed --wait --new
 [init]
 	defaultBranch = main
