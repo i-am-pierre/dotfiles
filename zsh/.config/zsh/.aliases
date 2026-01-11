@@ -1,46 +1,112 @@
-# Alias by Pierre to be sourced
+# ==============================================================================
+# Aliases
+# Author: I_am_pierre
+#
+# Scope:
+# - Interactive shell convenience
+# - Safety defaults
+# - Cross-platform behavior (macOS / Linux / FreeBSD)
+#
+# Note:
+# - Aliases do NOT apply in scripts
+# - This file is sourced only for interactive shells
+# ==============================================================================
 
-if [[ $(uname) == Linux ]] ; then
+
+# ==============================================================================
+# Core utilities: colorized output
+# ==============================================================================
+
+# Use OSTYPE instead of uname to avoid subshells
+if [[ "$OSTYPE" == linux* ]]; then
+  # GNU coreutils (Linux)
   alias ls="ls --color=auto"
   alias grep="grep --color=auto"
   alias fgrep="fgrep --color=auto"
   alias egrep="egrep --color=auto"
-  alias bat="batcat" # bat is better than batcat
 else
+  # BSD variants (macOS, FreeBSD)
   alias ls="ls -G"
   alias grep="grep -G"
   alias fgrep="fgrep -G"
   alias egrep="egrep -G"
 fi
 
-# Vim
+
+# ==============================================================================
+# bat / batcat compatibility
+# ==============================================================================
+
+# On some Linux distros (Debian/Ubuntu), bat is installed as batcat
+# Create a bat alias only if bat does not already exist
+if command -v batcat &>/dev/null && ! command -v bat &>/dev/null; then
+  alias bat="batcat"
+fi
+
+
+# ==============================================================================
+# Editor shortcuts
+# ==============================================================================
+
+# Use vim when invoking vi (interactive convenience)
 alias vi='vim'
 
-# Git
+
+# ==============================================================================
+# Git shortcuts
+# ==============================================================================
+
+# Short alias for git itself
 alias g='git'
+
+# Add all changes (tracked + untracked)
 alias gaa='git add --all'
+
+# Branch management
 alias gb='git branch'
 alias gcb='git checkout -b'
+alias gsw='git switch'
+
+# Commit helpers
 alias gcmsg='git commit -m'
 
+# Diff and log
 alias gd='git diff'
-
 alias glog='git log --oneline --decorate --graph'
 alias gloga='git log --oneline --decorate --graph --all'
+
+# Merge helpers
 alias gm='git merge'
 alias gma='git merge --abort'
 
-alias gsh='git show'
+# Status and inspection
 alias gst='git status'
-alias gsw='git switch'
+alias gsh='git show'
 
-# Confirm before overwriting somthing
+
+# ==============================================================================
+# Safer defaults for destructive commands
+# ==============================================================================
+
+# Prompt before overwriting or deleting files
+# Applies only to interactive shells
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-# Others
+
+# ==============================================================================
+# Personal workflow shortcuts
+# ==============================================================================
+
+# Jump to repositories directory
 alias cdrepo='cd ~/Documents/Code/Repos'
+
+# Open Zsh config in Zed
 alias zs='zed $ZDOTDIR/.zshrc'
+
+# Reload Zsh configuration
 alias zr='source $ZDOTDIR/.zshrc'
+
+# yt-dlp: best video + audio format
 alias ytdl="yt-dlp -f 'bv*+ba'"
