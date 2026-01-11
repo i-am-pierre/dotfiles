@@ -9,6 +9,13 @@
 # This file runs ONLY for login shells.
 # ==============================================================================
 
+# ==============================================================================
+# Ensure Zsh Runtime Directories Exist
+# ==============================================================================
+
+# Safe to create directories here (login shell only)
+mkdir -p "$ZDOTDIR" \
+         "$XDG_CACHE_HOME/zsh"
 
 # ==============================================================================
 # Homebrew Environment (macOS only)
