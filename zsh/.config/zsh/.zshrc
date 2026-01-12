@@ -155,22 +155,24 @@ if command -v bat &>/dev/null; then
 fi
 
 # ------------------------------------------------------------------------------
-# Empty Enter → ls -G
+# Empty Enter → ls
 # ------------------------------------------------------------------------------
 
-function _empty_enter_ls() {
-  if [[ -z "${BUFFER//[[:space:]]/}" ]]; then
-    BUFFER=""
-    print
-    command ls -G
-    zle reset-prompt
-  else
+function zle-empty-enter-ls() {
+  # If buffer is not empty → normal Enter
+  if [[ -n "${BUFFER//[[:space:]]/}" ]]; then
     zle accept-line
+    return
   fi
+
+  # Empty buffer
+  zle -I          # flush input state
+  command ls -G   # or just: command ls
 }
 
-zle -N _empty_enter_ls
-bindkey '^M' _empty_enter_ls
+zle -N zle-empty-enter-ls
+bindkey -r '^M'
+bindkey '^M' zle-empty-enter-ls
 
 # ==============================================================================
 # Aliases
