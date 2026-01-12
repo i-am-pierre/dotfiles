@@ -154,6 +154,23 @@ if command -v bat &>/dev/null; then
   export BAT_THEME="Visual Studio Dark+"
 fi
 
+# ------------------------------------------------------------------------------
+# Empty Enter → ls -G
+# ------------------------------------------------------------------------------
+
+function _empty_enter_ls() {
+  if [[ -z "${BUFFER//[[:space:]]/}" ]]; then
+    BUFFER=""
+    print
+    command ls -G
+    zle reset-prompt
+  else
+    zle accept-line
+  fi
+}
+
+zle -N _empty_enter_ls
+bindkey '^M' _empty_enter_ls
 
 # ==============================================================================
 # Aliases
