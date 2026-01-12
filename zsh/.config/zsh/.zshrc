@@ -77,25 +77,37 @@ setopt PROMPT_SUBST
 PROMPT='[%F{green}%n@%m%f] %F{cyan}%~%f ${vcs_info_msg_0_}
 > '
 
-
 # ==============================================================================
-# Command Line Editing Enhancements
+# ZLE Widgets (interactive shells only)
 # ==============================================================================
+if [[ -o interactive ]]; then
 
-# Load the widget that opens the current command in $EDITOR
-autoload -Uz edit-command-line
+  # Load the widget that opens the current command in $EDITOR
+  autoload -Uz edit-command-line
+  zle -N edit-command-line
+  bindkey '^X^E' edit-command-line
 
-# Register the widget with ZLE (Zsh Line Editor)
-zle -N edit-command-line
+  # Enable "magic space"
+  bindkey ' ' magic-space
 
-# Bind Ctrl+X Ctrl+E to open the current command in $EDITOR
-# Extremely useful for long or complex commands
-bindkey '^X^E' edit-command-line
+  # ----------------------------------------------------------------------------
+  # Empty Enter → ls
+  # ----------------------------------------------------------------------------
+  function zle-empty-enter-ls() {
+    if [[ -n "${BUFFER//[[:space:]]/}" ]]; then
+      zle accept-line
+      return
+    fi
 
-# Enable "magic space":
-# Expands history references like !!, !$ when pressing space
-bindkey ' ' magic-space
+    zle -I
+    command ls -G
+  }
 
+  zle -N zle-empty-enter-ls
+  bindkey -r '^M'
+  bindkey '^M' zle-empty-enter-ls
+
+fi
 
 # ==============================================================================
 # Completion System (XDG-compliant)
@@ -153,26 +165,6 @@ export GPG_TTY="$(tty)"
 if command -v bat &>/dev/null; then
   export BAT_THEME="Visual Studio Dark+"
 fi
-
-# ------------------------------------------------------------------------------
-# Empty Enter → ls
-# ------------------------------------------------------------------------------
-
-function zle-empty-enter-ls() {
-  # If buffer is not empty → normal Enter
-  if [[ -n "${BUFFER//[[:space:]]/}" ]]; then
-    zle accept-line
-    return
-  fi
-
-  # Empty buffer
-  zle -I          # flush input state
-  command ls -G   # or just: command ls
-}
-
-zle -N zle-empty-enter-ls
-bindkey -r '^M'
-bindkey '^M' zle-empty-enter-ls
 
 # ==============================================================================
 # Aliases
